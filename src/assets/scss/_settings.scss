@@ -69,7 +69,7 @@ $global-font-size: 16px;
 $global-width: 1200px;
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #ff5912,
+  primary: #190078,
   secondary: #767676,
   success: #3adb76,
   warning: #ffae00,
@@ -80,9 +80,9 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #34404b;
 $white: #fefefe;
-$body-background: #f4f6f8;
-$body-font-color: #495662;
-$body-font-family: 'Harmonia Sans', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-background: #FAFAFA;
+$body-font-color: rgba(0, 0, 0, 0.87);;
+$body-font-family: Roboto, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -101,6 +101,7 @@ $print-transparent-backgrounds: true;
 
 @include add-foundation-colors;
 $print-hrefs: true;
+
 
 // 2. Breakpoints
 // --------------
@@ -131,8 +132,8 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: $body-font-family;
-$header-font-weight: 700;
+$header-font-family: Roboto, sans-serif;
+$header-font-weight: 400;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
@@ -196,6 +197,7 @@ $keystroke-background: $light-gray;
 $keystroke-padding: rem-calc(2 4 0);
 $keystroke-radius: $global-radius;
 $abbr-underline: 1px dotted $black;
+
 
 // 5. Typography Helpers
 // ---------------------
