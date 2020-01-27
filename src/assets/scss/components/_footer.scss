@@ -1,6 +1,10 @@
 .ba-footer{
    background-color: #190078;
-   padding: 46px 0 50px;
+	padding: 20px 0 20px;
+	
+	@include breakpoint(large){
+		padding: 46px 0 50px;		
+	}
 
    &-logo{
       margin-bottom: 25px;
@@ -19,7 +23,11 @@
       &--list{
          list-style: none;
          margin: 0;
-         letter-spacing: 0.15px;
+			letter-spacing: 0.15px;
+			
+			@include breakpoint(small){
+				margin-bottom: 16px;
+			}
 
          li + li{
             margin-top: 15px;
@@ -36,27 +44,20 @@
    }
 
    &-social{
-      position: relative;
+		@include breakpoint(large){
+			position: relative;
        
-      &--icon{
-         position: absolute;
-         bottom: 0;
-         right: 0;
-         margin-right: 48px;
-			margin-bottom: -5px;
-					
-			&:hover{
-				svg{
-					path{
-						fill: #000;
-					}
-				}
-				
+      	&--icon{
+         	position: absolute;
+         	bottom: 0;
+         	right: 0;
+         	margin-right: 48px;
+				margin-bottom: 13px;								
 			}		
 			
          a + a{
             margin-left: 31px;
          }
-      }
+		}  
    }
 }
