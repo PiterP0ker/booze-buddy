@@ -1,15 +1,9 @@
-.ba-main-menu{
-    a{
-        color: $black;
-        &:hover{
-            color: lighten($primary-color, 20%);
-        }
-    }
+.ba-header {
+	background: $primary-color;
+	padding: 21px 0;
 }
-.off-canvas{
-    .menu{
-        a{
-            padding: 10px;
-        }
-    }
+
+
+.ba-header-advert {
+	padding-left: 210px;
 }

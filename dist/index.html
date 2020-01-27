@@ -37,30 +37,100 @@
           </ul>
       </nav>    </div>
     <div class="off-canvas-content" data-off-canvas-content>
-      <header class="ba-header-wrap">    
-          <div class="ba-header-header">
-              <div class="row align-middle ">
-                  <div class="column">
-                      <a href="/">
-                          <img src="assets/img/logo.png" alt="Logo">
-                      </a>
-                  </div>
-                  <!-- /.column -->
-                  <div class="column shrink">
-                      <button class="menu-icon dark hide-for-medium" type="button" data-open="offCanvas" aria-label="Show menu">
-                              </button>
-                      <ul class="menu ba-main-menu show-for-medium">
-                          <li  class="active" ><a href="index.html">Home</a></li>
-                      </ul>
-                  </div>
-                  <!-- /.column -->
-              </div>
-              <!-- /.row -->
-          </div>
+      <header class="ba-header">
+      	<div class="row">
+      		<div class="column large-6 small-12">
+      				<a href="#"><img class="ba-header-group__logo" src="assets/img/logo_header.png" alt="Logo"></a>
+      		</div>
+      		<!-- /.column -->
+      
+      		<div class="column large-6 small-12">
+      			<div class="ba-header-advert">
+      				<a href="#" class="ba-button ba-button--lighter">
+      					создать объявление
+      				</a>
+      				<a href="#" class="ba-header-registration">
+      					<img src="assets/img/register.svg" alt="Registration">
+      				</a>
+      			</div>
+      		</div>
+      		<!-- /.column -->
+      	</div>
+      	<!-- /.row -->
       </header>      
       <main>
-        <h1>Home</h1>
+        <section class="section-register">
+        	<div class="row">
+        		<div class="column large-6 small-12">
+        			<div class="ba-register">
+        				<h2 class="ba-register__title">
+        					Поможем найти компанию чтобы отлично провести время
+        				</h2>
+        				<a href="#" class="ba-button">
+        					Влиться в коллектив
+        				</a>
+        			</div>
+        		</div>
+        		<!-- /.column -->
+        		<div class="column large-6 small-12">
         
+        		</div>
+        		<!-- /.column -->
+        	</div>
+        	<!-- /.row -->
+        </section><section class="section-search">
+        	<div class="row">
+        		<div class="column large-6 small-12">
+        			<div class="ba-search">
+        				<h3 class="ba-search__title">
+        					Начните поиск компании и события прямо сейчас
+        				</h3>
+        				<form action="#" method="POST">
+        					<label for="city">Город</label>
+        					<select id="city" >
+        						<option value="Киев">Киев</option>
+        						<option value="Полтава">Полтава</option>
+        						<option value="Харьков">Харьков</option>
+        						<option value="Львов">Львов</option>
+        						<option value="Где" selected hidden>Где</option>
+        					</select>
+        
+        					<label for="date">Дата</label>
+        					<input type="date" id="date" name="start" value="Когда">
+        
+        					<label for="drink">Что пить</label>
+        					<select id="drink">
+        						<option value="Водка">Водка</option>
+        						<option value="Ром">Ром</option>
+        						<option value="Виски">Виски</option>
+        						<option value="Вино">Вино</option>
+        						<option value="Вид алкоголя" selected hidden>Вид алкоголя</option>
+        					</select>
+        
+        					<label for="amount">Количество людей</label>
+        					<select id="amount">
+        						<option value="1">1</option>
+        						<option value="2">2</option>
+        						<option value="3">3</option>
+        						<option value="4">4</option>
+        						<option value="5">5</option>
+        						<option value="Больше 5">Больше 5</option>
+        						<option value="Сколько людей хочу найти" selected hidden>Сколько людей хочу найти</option>
+        					</select>
+        				</form>
+        				<button type="submit" href="#" class="ba-button ba-button--lighter">
+        					Искать
+        				</button>
+        			</div>
+        		</div>
+        		<!-- /.column -->
+        		<div class="column large-6 small-12">
+        
+        		</div>
+        		<!-- /.column -->
+        	</div>
+        	<!-- /.row -->
+        </section>
       </main>
 
       <footer class="ba-footer">

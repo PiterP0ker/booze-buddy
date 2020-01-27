@@ -1,0 +1,12 @@
+.section-register {
+	background: #fff url(../img/people.jpg) no-repeat 50%;
+	background-size: cover;
+}
+.ba-register {
+	padding: 170px 0 209px;
+	&__title {
+		max-width: 360px;
+		font-size: 34px;
+		color: $primary-color;
+	}
+}

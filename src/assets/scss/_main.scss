@@ -1,3 +1,29 @@
+.ba-button {
+	display: inline-block;
+	background: $primary-color;
+	color: #fff;
+	text-transform: uppercase;
+	border-radius: 8px;
+	padding: 0 16px;
+	min-height: 42px;
+	line-height: 42px;
+	margin-right: 71px;
+	font-weight: 500;
+	font-family: $body-font-family;
+
+	&:hover {
+		border: 1px solid $primary-color;
+		background: #fff;
+	}
+
+	&--lighter {
+		background: #4B01D1;
+		&:hover {
+			color: #4B01D1
+		}
+	}
+}
+
 a, button{
     transition: .3s ease-in;
     transition-property: color, background-color, opacity;
