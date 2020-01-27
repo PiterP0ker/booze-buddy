@@ -1,0 +1,39 @@
+.ba-section-about{
+   background: #E5E5E5;
+   padding: 0;
+
+   .ba-information{
+      margin: auto 0;
+      margin-left: 82px;
+      max-width: 328px;
+   }
+
+   .ba-title{
+      font-size: 24px;
+      color: #190078;
+      margin-bottom: 45px;
+   }
+
+   .ba-about-list{   
+      list-style: none;
+      li{
+         position: relative;
+         margin-left: 20px; 
+         letter-spacing: 0.25px;
+         
+         &::before{
+            content: "";
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            left: -40px;
+            background: url(/assets/img/list-style.svg) no-repeat 50%;
+            z-index: 3;
+         }
+      }
+
+      li+li{
+         margin-top: 22px;
+      }
+   }
+}

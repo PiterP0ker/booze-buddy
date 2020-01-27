@@ -1,6 +1,62 @@
 .ba-footer{
-    
-}
-.ba-copyright{
-    
+   background-color: #190078;
+   padding: 46px 0 50px;
+
+   &-logo{
+      margin-bottom: 25px;
+      align-items: center;
+
+      img{
+         margin-right: 20px;
+      }
+
+      &--title{
+         font-family: $body-font-family;
+         font-size: 24px;
+         color: $body-background;
+      }
+
+      &--list{
+         list-style: none;
+         margin: 0;
+         letter-spacing: 0.15px;
+
+         li + li{
+            margin-top: 15px;
+         }
+
+         a{
+				color: $body-background;
+				
+				&:hover{
+					color: #c5c5c5;
+				}
+         }
+      }
+   }
+
+   &-social{
+      position: relative;
+       
+      &--icon{
+         position: absolute;
+         bottom: 0;
+         right: 0;
+         margin-right: 48px;
+			margin-bottom: -5px;
+					
+			&:hover{
+				svg{
+					path{
+						fill: #000;
+					}
+				}
+				
+			}		
+			
+         a + a{
+            margin-left: 31px;
+         }
+      }
+   }
 }
