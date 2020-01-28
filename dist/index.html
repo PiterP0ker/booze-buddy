@@ -46,8 +46,11 @@
       
       		<div class="column large-6 small-12">
       			<div class="ba-header-advert">
-      				<a href="#" class="ba-button ba-button--lighter">
+      				<a href="#" class="hide-for-small-only  ba-button ba-button--lighter">
       					создать объявление
+      				</a>
+      				<a href="#" class="ba-header-add hide-for-medium">
+      					<img src="assets/img/add.png" alt="Add">
       				</a>
       				<a href="#" class="ba-header-registration">
       					<img src="assets/img/register.svg" alt="Registration">
@@ -87,7 +90,7 @@
         				</h3>
         				<form action="#" method="POST">
         					<label for="city">Город</label>
-        					<select id="city" >
+        					<select id="city">
         						<option value="Киев">Киев</option>
         						<option value="Полтава">Полтава</option>
         						<option value="Харьков">Харьков</option>
@@ -104,6 +107,11 @@
         						<option value="Ром">Ром</option>
         						<option value="Виски">Виски</option>
         						<option value="Вино">Вино</option>
+        						<option value="Текила">Текила</option>
+        						<option value="Пиво">Пиво</option>
+        						<option value="Настойки">Настойки</option>
+        						<option value="Коктейли">Коктейли</option>
+        						<option value="Другое">Другое</option>
         						<option value="Вид алкоголя" selected hidden>Вид алкоголя</option>
         					</select>
         
@@ -117,6 +125,25 @@
         						<option value="Больше 5">Больше 5</option>
         						<option value="Сколько людей хочу найти" selected hidden>Сколько людей хочу найти</option>
         					</select>
+        
+        					<label for="challenge"><input type="checkbox" name="challenge" id="challenge" checked>Участвовать в
+        						челендже</label>
+        
+        					<div class="ba-challenge">
+        						<div class="ba-challenge__type">
+        							<img src="assets/img/party.jpg" alt="Вечеринка в костюмах">
+        							<p>Вечеринка в костюмах</p>
+        						</div>
+        						<div class="ba-challenge__type">
+        							<img src="assets/img/golden-mile.jpg" alt="Пройти золотую милю">
+        							<p>Пройти золотую милю</p>
+        						</div>
+        						<div class="ba-challenge__type">
+        							<img src="assets/img/last-hero.jpg" alt="Последний герой">
+        							<p>Последний герой</p>
+        						</div>
+        					</div>
+        
         				</form>
         				<button type="submit" href="#" class="ba-button ba-button--lighter">
         					Искать

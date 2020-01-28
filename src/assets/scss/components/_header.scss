@@ -1,9 +1,17 @@
 .ba-header {
 	background: $primary-color;
 	padding: 21px 0;
+	@media screen and (max-width:640px){
+		padding: 16px 0;	
+	}
 }
 
 
 .ba-header-advert {
 	padding-left: 210px;
+	@media screen and (max-width:640px){
+		display: flex;	
+		align-items: center;
+		justify-content: center;
+	}
 }

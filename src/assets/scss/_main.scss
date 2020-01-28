@@ -10,9 +10,12 @@
 	margin-right: 71px;
 	font-weight: 500;
 	font-family: $body-font-family;
+	@media screen and (max-width:640px){
+			margin: 0 auto;
+	}
 
 	&:hover {
-		border: 1px solid $primary-color;
+		box-shadow: 2px 2px 4px $primary-color;
 		background: #fff;
 	}
 
