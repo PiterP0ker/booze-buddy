@@ -86,6 +86,54 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./cards.js":
+/*!******************!*\
+  !*** ./cards.js ***!
+  \******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ([{
+  "name": "Ксюша",
+  "city": "Полтава",
+  "reason": "Хочу веселья",
+  "company": "Больше 5 человек",
+  "place": "Villa Krokodila",
+  "drink": "Коктейли"
+}, {
+  "name": "Андрей",
+  "city": "Полтава",
+  "reason": "Выборы президента",
+  "company": "3 человека",
+  "place": "Villa Krokodila",
+  "drink": "Пиво"
+}, {
+  "name": "Зинаида",
+  "city": "Полтава",
+  "reason": "День рождения",
+  "company": "1 человек",
+  "place": "Versal",
+  "drink": "Водка"
+}, {
+  "name": "Виолетта",
+  "city": "Полтава",
+  "reason": "Просто так",
+  "company": "3 человека",
+  "place": "Чичиков",
+  "drink": "Вино"
+}, {
+  "name": "Виктор",
+  "city": "Полтава",
+  "reason": "Найти друзей",
+  "company": "2 человека",
+  "place": "Muza Bar",
+  "drink": "Коктейли"
+}]);
+
+/***/ }),
+
 /***/ "./node_modules/foundation-sites/js/foundation.core.js":
 /*!*************************************************************!*\
   !*** ./node_modules/foundation-sites/js/foundation.core.js ***!
@@ -12416,6 +12464,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_foundation_explicit_pieces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/foundation-explicit-pieces */ "./src/assets/js/lib/foundation-explicit-pieces.js");
 /* harmony import */ var _lib_slick_min_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/slick.min.js */ "./src/assets/js/lib/slick.min.js");
 /* harmony import */ var _lib_slick_min_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_lib_slick_min_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _cards_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../cards.js */ "./cards.js");
 
  // Foundation JS relies on a global varaible. In ES6, all imports are hoisted
 // to the top of the file so if we used`import` to import Foundation,
@@ -12430,6 +12479,8 @@ window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a; // require('found
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).foundation();
+
+console.log(_cards_js__WEBPACK_IMPORTED_MODULE_4__["default"]);
 
 /***/ }),
 

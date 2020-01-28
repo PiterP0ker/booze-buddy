@@ -1,3 +1,4 @@
+
 import $ from 'jquery';
 import 'what-input';
 
@@ -16,3 +17,6 @@ import './lib/foundation-explicit-pieces';
 import './lib/slick.min.js';
 
 $(document).foundation();
+
+import cards from '../../../cards.js';
+console.log(cards);
