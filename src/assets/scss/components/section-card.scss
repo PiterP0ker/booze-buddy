@@ -1,0 +1,133 @@
+.ba-section-cards{
+	background: #E5E5E5;
+	padding: 36px 0 89px;
+
+	.ba-search-filters{
+		background: #190078;
+		padding: 10px 202px 11px 181px;
+		border-radius: 20px;
+		margin-bottom: 35px;
+		text-align: center;
+
+		.button{
+			padding: 0;
+		}
+
+		.ba-fillters-button{
+			background-color: #F2E7FE;
+			border-radius: 20px;
+			padding: 8px 140px 8px 121px;
+			text-align: center;
+			display: flex;
+			align-items: center;
+
+			svg + span {
+				margin-left: 6px;
+			}
+		}
+
+		.ba-button-text{
+			font-weight: 500;
+			font-size: 16px;
+			letter-spacing: 0.15px;
+			color: #190078;
+		}
+	}
+
+	.person-card{
+		padding: 35px 149px 44px 97px;
+		position: relative;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 20px;
+		transform: translateY(-70px);
+
+		&-first{
+			padding-top: 70px;
+		}
+	}
+
+	.ba-person-name{
+		font-weight: 500;
+		font-size: 20px;
+		letter-spacing: 0.15px;
+		color: #190078;
+	}
+
+	.ba-card-info{
+		display: flex;
+		margin-bottom: 25px;
+
+		span + span{
+			margin-left: 30px;
+		}
+
+		.ba-rating{
+			color: #190078;
+		}
+
+		.ba-data{
+			font-weight: 500;
+			font-size: 16px;
+			letter-spacing: 0.15px;
+
+			color: #190078;
+		}
+	}
+
+	.ba-person-list-info{
+		ul{
+			margin: 0;
+
+			li{
+				list-style: none;
+				display: flex;
+				flex-direction: row;
+			}
+
+			li + li{
+				margin-top: 20px;
+			}
+
+			.ba-value{
+				width: 94px;
+				max-height: 48px;
+
+				font-weight: 500;
+				font-size: 16px;
+				letter-spacing: 0.15px;
+				color: #190078;
+			}
+
+			.ba-answer{
+				max-width: 114px;
+
+				font-weight: normal;
+				font-size: 16px;
+				letter-spacing: 0.25px;
+				color: #101010;
+			}
+		}
+		
+	}
+
+	.ba-like{
+		position: absolute;
+		right: 55px;
+
+		svg{
+			path{
+				&:hover{
+					fill: red;
+				}
+			}
+		}
+
+		&--active{
+			svg{
+				path{	
+					fill: red;
+				}
+			}
+		}
+	}
+}

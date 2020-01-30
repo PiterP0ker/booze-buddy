@@ -1,18 +1,14 @@
 .section-search {
 	background: #FAFAFA url(../img/beer.jpg) no-repeat 50%;
-	background-size: cover;
-	margin-top: 100px;
-	margin-bottom: 100px;
+	padding: 33px 0; 
 	@media screen and (max-width:640px){
-		margin-top: 0;
-	margin-bottom: 0;
-	background: #FAFAFA;
+		padding: 0;
+		background: #FAFAFA;
 	}
 
 }
 
 .ba-search {
-	padding: 175px 0 90px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;

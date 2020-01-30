@@ -1,32 +1,306 @@
-<div class="row column">
-	<script type="text/temlate" data-tune-tmpl>
+<section class="ba-section-cards">
 	<div class="row align-center">
-		<div class="column small-12 medium-10 large-8">
+		<div class="column large-10 small-12">
+			<div class="ba-search-filters">
+				<button class="button" type="button" data-toggle="example-dropdown-bottom-center">
+					<div class="ba-fillters-button">
+						<svg width="20" height="20">
+							<use xlink:href="#icon-search" />
+						</svg>
+						<span class="ba-button-text">Уточнить детали поиска</span>
+					</div>
+				</button>
+				<div class="dropdown-pane" data-position="bottom" data-alignment="center"
+					id="example-dropdown-bottom-center" data-dropdown data-auto-focus="true">
+
+				</div>
+			</div>
+			<!-- /.ba-search-filters -->
+			<a href="#">
+				<div class="person-card person-card-first">
+					<div class="row">
+						<div class="column large-3">
+							<img src="{{root}}assets/img/" alt="{{name}}">
+						</div>
+						<!-- /.column -->
+						<div class="column">
+							<div class="ba-person-name">{{name}}</div>
+							<div class="ba-card-info">
+								<span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
+								<span class="ba-data">{{date}}}</span>
+							</div>
+							<div class="row">
+								<div class="column">
+									<div class="ba-person-list-info">
+										<ul class="ba-list--2col">
+											<li>
+												<span class="ba-value">Город:</span>
+												<span class="ba-answer">{{city}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Повод:</span>
+												<span class="ba-answer">{{reason}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Компания:</span>
+												<span class="ba-answer">{{company}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Заведение:</span>
+												<span class="ba-answer">{{place}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Напиток:</span>
+												<span class="ba-answer">{{drink}}</span>
+											</li>
+										</ul>
+									</div>
+									<!-- /.ba-person-list-info -->
+								</div>
+							</div>
+						</div>
+						<!-- /.column -->
+
+						<div class="ba-like">
+							<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z"
+									fill="#D7B7FD" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<!-- /.person-card -->
+			</a>
 
 			<a href="#">
-				<div class="row">
-					<div class="column small-12 medium-4">
-						<img src="assets/img/ksyusha.png" alt="Ксюша">
-						
-					</div>
-					<div class="column small-12 medium-8">
-					<h4>{{name}}</h4>
-					<span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
-					<ul class="ba-list ba-list--2col">
-						<li>Город:{{city}}</li>
-						<li>Повод:{{reason}}</li>
-						<li>Компания:{{company}}</li>
-						<li>Заведение:{{place}}</li>
-						<li>Напиток:{{drink}}</li>
-					</ul>
-						
-					</div>
-	
-					</div>
-			</a>
-			</div>
-		</div>
-	</script>
-	</div>
+				<div class="person-card person-card-first">
+					<div class="row">
+						<div class="column large-3">
+							<img src="{{root}}assets/img/" alt="{{name}}">
+						</div>
+						<!-- /.column -->
+						<div class="column">
+							<div class="ba-person-name">{{name}}</div>
+							<div class="ba-card-info">
+								<span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
+								<span class="ba-data">{{date}}}</span>
+							</div>
+							<div class="row">
+								<div class="column">
+									<div class="ba-person-list-info">
+										<ul class="ba-list--2col">
+											<li>
+												<span class="ba-value">Город:</span>
+												<span class="ba-answer">{{city}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Повод:</span>
+												<span class="ba-answer">{{reason}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Компания:</span>
+												<span class="ba-answer">{{company}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Заведение:</span>
+												<span class="ba-answer">{{place}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Напиток:</span>
+												<span class="ba-answer">{{drink}}</span>
+											</li>
+										</ul>
+									</div>
+									<!-- /.ba-person-list-info -->
+								</div>
+							</div>
+						</div>
+						<!-- /.column -->
 
-<!-- /.row -->
+						<div class="ba-like">
+							<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z"
+									fill="#D7B7FD" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<!-- /.person-card -->
+			</a>
+
+			<a href="#">
+				<div class="person-card person-card-first">
+					<div class="row">
+						<div class="column large-3">
+							<img src="{{root}}assets/img/" alt="{{name}}">
+						</div>
+						<!-- /.column -->
+						<div class="column">
+							<div class="ba-person-name">{{name}}</div>
+							<div class="ba-card-info">
+								<span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
+								<span class="ba-data">{{date}}}</span>
+							</div>
+							<div class="row">
+								<div class="column">
+									<div class="ba-person-list-info">
+										<ul class="ba-list--2col">
+											<li>
+												<span class="ba-value">Город:</span>
+												<span class="ba-answer">{{city}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Повод:</span>
+												<span class="ba-answer">{{reason}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Компания:</span>
+												<span class="ba-answer">{{company}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Заведение:</span>
+												<span class="ba-answer">{{place}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Напиток:</span>
+												<span class="ba-answer">{{drink}}</span>
+											</li>
+										</ul>
+									</div>
+									<!-- /.ba-person-list-info -->
+								</div>
+							</div>
+						</div>
+						<!-- /.column -->
+
+						<div class="ba-like">
+							<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z"
+									fill="#D7B7FD" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<!-- /.person-card -->
+			</a>
+
+			<a href="#">
+				<div class="person-card person-card-first">
+					<div class="row">
+						<div class="column large-3">
+							<img src="{{root}}assets/img/" alt="{{name}}">
+						</div>
+						<!-- /.column -->
+						<div class="column">
+							<div class="ba-person-name">{{name}}</div>
+							<div class="ba-card-info">
+								<span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
+								<span class="ba-data">{{date}}}</span>
+							</div>
+							<div class="row">
+								<div class="column">
+									<div class="ba-person-list-info">
+										<ul class="ba-list--2col">
+											<li>
+												<span class="ba-value">Город:</span>
+												<span class="ba-answer">{{city}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Повод:</span>
+												<span class="ba-answer">{{reason}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Компания:</span>
+												<span class="ba-answer">{{company}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Заведение:</span>
+												<span class="ba-answer">{{place}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Напиток:</span>
+												<span class="ba-answer">{{drink}}</span>
+											</li>
+										</ul>
+									</div>
+									<!-- /.ba-person-list-info -->
+								</div>
+							</div>
+						</div>
+						<!-- /.column -->
+
+						<div class="ba-like">
+							<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z"
+									fill="#D7B7FD" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<!-- /.person-card -->
+			</a>
+
+			<a href="#">
+				<div class="person-card person-card-first">
+					<div class="row">
+						<div class="column large-3">
+							<img src="{{root}}assets/img/" alt="{{name}}">
+						</div>
+						<!-- /.column -->
+						<div class="column">
+							<div class="ba-person-name">{{name}}</div>
+							<div class="ba-card-info">
+								<span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
+								<span class="ba-data">{{date}}}</span>
+							</div>
+							<div class="row">
+								<div class="column">
+									<div class="ba-person-list-info">
+										<ul class="ba-list--2col">
+											<li>
+												<span class="ba-value">Город:</span>
+												<span class="ba-answer">{{city}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Повод:</span>
+												<span class="ba-answer">{{reason}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Компания:</span>
+												<span class="ba-answer">{{company}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Заведение:</span>
+												<span class="ba-answer">{{place}}</span>
+											</li>
+											<li>
+												<span class="ba-value">Напиток:</span>
+												<span class="ba-answer">{{drink}}</span>
+											</li>
+										</ul>
+									</div>
+									<!-- /.ba-person-list-info -->
+								</div>
+							</div>
+						</div>
+						<!-- /.column -->
+
+						<div class="ba-like">
+							<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z"
+									fill="#D7B7FD" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<!-- /.person-card -->
+			</a>
+		</div>
+	</div>
+</section>
+<!-- /.ba-section-cards -->
