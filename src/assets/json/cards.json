@@ -1,15 +1,24 @@
 
 [
 	{
+		"id": "1",
+		"url": "single.html",
+		"img": "assets/img/ksusha-card.png",
 		"name": "Ксюша", 
+		"date": "18.01.2020",
 		"city": "Полтава", 
 		"reason": "Хочу веселья", 
 		"company": "Больше 5 человек", 
 		"place": "Villa Krokodila", 
-		"drink": "Коктейли"
+		"drink": "Коктейли",
+		"challenge": "Вечеринка в костюмах"
 	}, 
 	{
+		"id": "2",
+		"url": "single.html",
+		"img": "assets/img/andrew-card.png",
 		"name": "Андрей", 
+		"date": "18.01.2020",
 		"city": "Полтава", 
 		"reason": "Выборы президента", 
 		"company": "3 человека", 
@@ -17,7 +26,11 @@
 		"drink": "Пиво"
 	}, 
 	{
+		"id": "3",
+		"url": "single.html",
+		"img": "assets/img/zina-card.png",
 		"name": "Зинаида", 
+		"date": "11.01.2020",
 		"city": "Полтава", 
 		"reason": "День рождения", 
 		"company": "1 человек", 
@@ -25,7 +38,11 @@
 		"drink": "Водка"
 	}, 
 	{
+		"id": "4",
+		"url": "single.html",
+		"img": "assets/img/violetta-card.png",
 		"name": "Виолетта", 
+		"date": "16.01.2020",
 		"city": "Полтава", 
 		"reason": "Просто так", 
 		"company": "3 человека", 
@@ -33,7 +50,11 @@
 		"drink": "Вино"
 	}, 
 	{
+		"id": "5",
+		"url": "single.html",
+		"img": "assets/img/viktor-card.png",
 		"name": "Виктор", 
+		"date": "10.01.2020",
 		"city": "Полтава", 
 		"reason": "Найти друзей", 
 		"company": "2 человека", 

@@ -24,4 +24,6 @@ new Vue({
 	el: '#search',
 	template: '<App/>',
 	components: {App}
-})
+});
+
+// var elem = new Foundation.Dropdown(element, options);

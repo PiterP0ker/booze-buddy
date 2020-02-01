@@ -176,12 +176,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import json from './json/cards.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      itemsPerPage: 5,
       cards: []
     };
+  },
+  methods: {
+    getTotalPages: function getTotalPages() {
+      return Math.ceil(this.cards.length / this.itemsPerPage);
+    }
   },
   mounted: function mounted() {
     var _this = this;
@@ -190,7 +253,6 @@ __webpack_require__.r(__webpack_exports__);
       return res.json();
     }).then(function (list) {
       _this.cards = list;
-      console.log(_this.cards);
     });
   }
 });
@@ -846,6 +908,1139 @@ function ignoreMousedisappear(handler) {
   };
 }
 
+
+
+/***/ }),
+
+/***/ "./node_modules/foundation-sites/js/foundation.dropdown.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/foundation-sites/js/foundation.dropdown.js ***!
+  \*****************************************************************/
+/*! exports provided: Dropdown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return Dropdown; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./node_modules/foundation-sites/js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./node_modules/foundation-sites/js/foundation.core.utils.js");
+/* harmony import */ var _foundation_positionable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.positionable */ "./node_modules/foundation-sites/js/foundation.positionable.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.triggers */ "./node_modules/foundation-sites/js/foundation.util.triggers.js");
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.touch */ "./node_modules/foundation-sites/js/foundation.util.touch.js");
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+/**
+ * Dropdown module.
+ * @module foundation.dropdown
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.box
+ * @requires foundation.util.touch
+ * @requires foundation.util.triggers
+ */
+
+var Dropdown =
+/*#__PURE__*/
+function (_Positionable) {
+  _inherits(Dropdown, _Positionable);
+
+  function Dropdown() {
+    _classCallCheck(this, Dropdown);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).apply(this, arguments));
+  }
+
+  _createClass(Dropdown, [{
+    key: "_setup",
+
+    /**
+     * Creates a new instance of a dropdown.
+     * @class
+     * @name Dropdown
+     * @param {jQuery} element - jQuery object to make into a dropdown.
+     *        Object should be of the dropdown panel, rather than its anchor.
+     * @param {Object} options - Overrides to the default plugin settings.
+     */
+    value: function _setup(element, options) {
+      this.$element = element;
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Dropdown.defaults, this.$element.data(), options);
+      this.className = 'Dropdown'; // ie9 back compat
+      // Touch and Triggers init are idempotent, just need to make sure they are initialized
+
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+      this._init();
+
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Dropdown', {
+        'ENTER': 'toggle',
+        'SPACE': 'toggle',
+        'ESCAPE': 'close'
+      });
+    }
+    /**
+     * Initializes the plugin by setting/checking options and attributes, adding helper variables, and saving the anchor.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_init",
+    value: function _init() {
+      var $id = this.$element.attr('id');
+      this.$anchors = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-toggle=\"".concat($id, "\"]")).length ? jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-toggle=\"".concat($id, "\"]")) : jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open=\"".concat($id, "\"]"));
+      this.$anchors.attr({
+        'aria-controls': $id,
+        'data-is-focus': false,
+        'data-yeti-box': $id,
+        'aria-haspopup': true,
+        'aria-expanded': false
+      });
+
+      this._setCurrentAnchor(this.$anchors.first());
+
+      if (this.options.parentClass) {
+        this.$parent = this.$element.parents('.' + this.options.parentClass);
+      } else {
+        this.$parent = null;
+      } // Set [aria-labelledby] on the Dropdown if it is not set
+
+
+      if (typeof this.$element.attr('aria-labelledby') === 'undefined') {
+        // Get the anchor ID or create one
+        if (typeof this.$currentAnchor.attr('id') === 'undefined') {
+          this.$currentAnchor.attr('id', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'dd-anchor'));
+        }
+
+        ;
+        this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
+      }
+
+      this.$element.attr({
+        'aria-hidden': 'true',
+        'data-yeti-box': $id,
+        'data-resize': $id
+      });
+
+      _get(_getPrototypeOf(Dropdown.prototype), "_init", this).call(this);
+
+      this._events();
+    }
+  }, {
+    key: "_getDefaultPosition",
+    value: function _getDefaultPosition() {
+      // handle legacy classnames
+      var position = this.$element[0].className.match(/(top|left|right|bottom)/g);
+
+      if (position) {
+        return position[0];
+      } else {
+        return 'bottom';
+      }
+    }
+  }, {
+    key: "_getDefaultAlignment",
+    value: function _getDefaultAlignment() {
+      // handle legacy float approach
+      var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.attr('class'));
+
+      if (horizontalPosition) {
+        return horizontalPosition[1];
+      }
+
+      return _get(_getPrototypeOf(Dropdown.prototype), "_getDefaultAlignment", this).call(this);
+    }
+    /**
+     * Sets the position and orientation of the dropdown pane, checks for collisions if allow-overlap is not true.
+     * Recursively calls itself if a collision is detected, with a new position class.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_setPosition",
+    value: function _setPosition() {
+      this.$element.removeClass("has-position-".concat(this.position, " has-alignment-").concat(this.alignment));
+
+      _get(_getPrototypeOf(Dropdown.prototype), "_setPosition", this).call(this, this.$currentAnchor, this.$element, this.$parent);
+
+      this.$element.addClass("has-position-".concat(this.position, " has-alignment-").concat(this.alignment));
+    }
+    /**
+     * Make it a current anchor.
+     * Current anchor as the reference for the position of Dropdown panes.
+     * @param {HTML} el - DOM element of the anchor.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_setCurrentAnchor",
+    value: function _setCurrentAnchor(el) {
+      this.$currentAnchor = jquery__WEBPACK_IMPORTED_MODULE_0___default()(el);
+    }
+    /**
+     * Adds event listeners to the element utilizing the triggers utility library.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_events",
+    value: function _events() {
+      var _this = this,
+          hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined';
+
+      this.$element.on({
+        'open.zf.trigger': this.open.bind(this),
+        'close.zf.trigger': this.close.bind(this),
+        'toggle.zf.trigger': this.toggle.bind(this),
+        'resizeme.zf.trigger': this._setPosition.bind(this)
+      });
+      this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function (e) {
+        _this._setCurrentAnchor(this);
+
+        if (_this.options.forceFollow === false) {
+          // if forceFollow false, always prevent default action
+          e.preventDefault();
+        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+          // if forceFollow true and hover option true, only prevent default action on 1st click
+          // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+          e.preventDefault();
+        }
+      });
+
+      if (this.options.hover) {
+        this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
+          _this._setCurrentAnchor(this);
+
+          var bodyData = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data();
+
+          if (typeof bodyData.whatinput === 'undefined' || bodyData.whatinput === 'mouse') {
+            clearTimeout(_this.timeout);
+            _this.timeout = setTimeout(function () {
+              _this.open();
+
+              _this.$anchors.data('hover', true);
+            }, _this.options.hoverDelay);
+          }
+        }).on('mouseleave.zf.dropdown', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["ignoreMousedisappear"])(function () {
+          clearTimeout(_this.timeout);
+          _this.timeout = setTimeout(function () {
+            _this.close();
+
+            _this.$anchors.data('hover', false);
+          }, _this.options.hoverDelay);
+        }));
+
+        if (this.options.hoverPane) {
+          this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
+            clearTimeout(_this.timeout);
+          }).on('mouseleave.zf.dropdown', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["ignoreMousedisappear"])(function () {
+            clearTimeout(_this.timeout);
+            _this.timeout = setTimeout(function () {
+              _this.close();
+
+              _this.$anchors.data('hover', false);
+            }, _this.options.hoverDelay);
+          }));
+        }
+      }
+
+      this.$anchors.add(this.$element).on('keydown.zf.dropdown', function (e) {
+        var $target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
+            visibleFocusableElements = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].findFocusable(_this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Dropdown', {
+          open: function open() {
+            if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
+              _this.open();
+
+              _this.$element.attr('tabindex', -1).focus();
+
+              e.preventDefault();
+            }
+          },
+          close: function close() {
+            _this.close();
+
+            _this.$anchors.focus();
+          }
+        });
+      });
+    }
+    /**
+     * Adds an event handler to the body to close any dropdowns on a click.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_addBodyHandler",
+    value: function _addBodyHandler() {
+      var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).not(this.$element),
+          _this = this;
+
+      $body.off('click.zf.dropdown tap.zf.dropdown').on('click.zf.dropdown tap.zf.dropdown', function (e) {
+        if (_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
+          return;
+        }
+
+        if (_this.$element.is(e.target) || _this.$element.find(e.target).length) {
+          return;
+        }
+
+        _this.close();
+
+        $body.off('click.zf.dropdown tap.zf.dropdown');
+      });
+    }
+    /**
+     * Opens the dropdown pane, and fires a bubbling event to close other dropdowns.
+     * @function
+     * @fires Dropdown#closeme
+     * @fires Dropdown#show
+     */
+
+  }, {
+    key: "open",
+    value: function open() {
+      // var _this = this;
+
+      /**
+       * Fires to close other open dropdowns, typically when dropdown is opening
+       * @event Dropdown#closeme
+       */
+      this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
+      this.$anchors.addClass('hover').attr({
+        'aria-expanded': true
+      }); // this.$element/*.show()*/;
+
+      this.$element.addClass('is-opening');
+
+      this._setPosition();
+
+      this.$element.removeClass('is-opening').addClass('is-open').attr({
+        'aria-hidden': false
+      });
+
+      if (this.options.autoFocus) {
+        var $focusable = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].findFocusable(this.$element);
+
+        if ($focusable.length) {
+          $focusable.eq(0).focus();
+        }
+      }
+
+      if (this.options.closeOnClick) {
+        this._addBodyHandler();
+      }
+
+      if (this.options.trapFocus) {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].trapFocus(this.$element);
+      }
+      /**
+       * Fires once the dropdown is visible.
+       * @event Dropdown#show
+       */
+
+
+      this.$element.trigger('show.zf.dropdown', [this.$element]);
+    }
+    /**
+     * Closes the open dropdown pane.
+     * @function
+     * @fires Dropdown#hide
+     */
+
+  }, {
+    key: "close",
+    value: function close() {
+      if (!this.$element.hasClass('is-open')) {
+        return false;
+      }
+
+      this.$element.removeClass('is-open').attr({
+        'aria-hidden': true
+      });
+      this.$anchors.removeClass('hover').attr('aria-expanded', false);
+      /**
+       * Fires once the dropdown is no longer visible.
+       * @event Dropdown#hide
+       */
+
+      this.$element.trigger('hide.zf.dropdown', [this.$element]);
+
+      if (this.options.trapFocus) {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].releaseFocus(this.$element);
+      }
+    }
+    /**
+     * Toggles the dropdown pane's visibility.
+     * @function
+     */
+
+  }, {
+    key: "toggle",
+    value: function toggle() {
+      if (this.$element.hasClass('is-open')) {
+        if (this.$anchors.data('hover')) return;
+        this.close();
+      } else {
+        this.open();
+      }
+    }
+    /**
+     * Destroys the dropdown.
+     * @function
+     */
+
+  }, {
+    key: "_destroy",
+    value: function _destroy() {
+      this.$element.off('.zf.trigger').hide();
+      this.$anchors.off('.zf.dropdown');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdown tap.zf.dropdown');
+    }
+  }]);
+
+  return Dropdown;
+}(_foundation_positionable__WEBPACK_IMPORTED_MODULE_3__["Positionable"]);
+
+Dropdown.defaults = {
+  /**
+   * Class that designates bounding container of Dropdown (default: window)
+   * @option
+   * @type {?string}
+   * @default null
+   */
+  parentClass: null,
+
+  /**
+   * Amount of time to delay opening a submenu on hover event.
+   * @option
+   * @type {number}
+   * @default 250
+   */
+  hoverDelay: 250,
+
+  /**
+   * Allow submenus to open on hover events
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  hover: false,
+
+  /**
+   * Don't close dropdown when hovering over dropdown pane
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  hoverPane: false,
+
+  /**
+   * Number of pixels between the dropdown pane and the triggering element on open.
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  vOffset: 0,
+
+  /**
+   * Number of pixels between the dropdown pane and the triggering element on open.
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  hOffset: 0,
+
+  /**
+   * Position of dropdown. Can be left, right, bottom, top, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  position: 'auto',
+
+  /**
+   * Alignment of dropdown relative to anchor. Can be left, right, bottom, top, center, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  alignment: 'auto',
+
+  /**
+   * Allow overlap of container/window. If false, dropdown will first try to position as defined by data-position and data-alignment, but reposition if it would cause an overflow.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  allowOverlap: false,
+
+  /**
+   * Allow overlap of only the bottom of the container. This is the most common
+   * behavior for dropdowns, allowing the dropdown to extend the bottom of the
+   * screen but not otherwise influence or break out of the container.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  allowBottomOverlap: true,
+
+  /**
+   * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  trapFocus: false,
+
+  /**
+   * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  autoFocus: false,
+
+  /**
+   * Allows a click on the body to close the dropdown.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  closeOnClick: false,
+
+  /**
+   * If true the default action of the toggle (e.g. follow a link with href) gets executed on click. If hover option is also true the default action gets prevented on first click for mobile / touch devices and executed on second click.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  forceFollow: true
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/foundation-sites/js/foundation.dropdownMenu.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/foundation-sites/js/foundation.dropdownMenu.js ***!
+  \*********************************************************************/
+/*! exports provided: DropdownMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropdownMenu", function() { return DropdownMenu; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./node_modules/foundation-sites/js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./node_modules/foundation-sites/js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./node_modules/foundation-sites/js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.nest */ "./node_modules/foundation-sites/js/foundation.util.nest.js");
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.box */ "./node_modules/foundation-sites/js/foundation.util.box.js");
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.util.touch */ "./node_modules/foundation-sites/js/foundation.util.touch.js");
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+/**
+ * DropdownMenu module.
+ * @module foundation.dropdownMenu
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.box
+ * @requires foundation.util.nest
+ * @requires foundation.util.touch
+ */
+
+var DropdownMenu =
+/*#__PURE__*/
+function (_Plugin) {
+  _inherits(DropdownMenu, _Plugin);
+
+  function DropdownMenu() {
+    _classCallCheck(this, DropdownMenu);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(DropdownMenu).apply(this, arguments));
+  }
+
+  _createClass(DropdownMenu, [{
+    key: "_setup",
+
+    /**
+     * Creates a new instance of DropdownMenu.
+     * @class
+     * @name DropdownMenu
+     * @fires DropdownMenu#init
+     * @param {jQuery} element - jQuery object to make into a dropdown menu.
+     * @param {Object} options - Overrides to the default plugin settings.
+     */
+    value: function _setup(element, options) {
+      this.$element = element;
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+      this.className = 'DropdownMenu'; // ie9 back compat
+
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
+
+      this._init();
+
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].register('DropdownMenu', {
+        'ENTER': 'open',
+        'SPACE': 'open',
+        'ARROW_RIGHT': 'next',
+        'ARROW_UP': 'up',
+        'ARROW_DOWN': 'down',
+        'ARROW_LEFT': 'previous',
+        'ESCAPE': 'close'
+      });
+    }
+    /**
+     * Initializes the plugin, and calls _prepareMenu
+     * @private
+     * @function
+     */
+
+  }, {
+    key: "_init",
+    value: function _init() {
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__["Nest"].Feather(this.$element, 'dropdown');
+      var subs = this.$element.find('li.is-dropdown-submenu-parent');
+      this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
+      this.$menuItems = this.$element.find('[role="menuitem"]');
+      this.$tabs = this.$element.children('[role="menuitem"]');
+      this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
+
+      if (this.options.alignment === 'auto') {
+        if (this.$element.hasClass(this.options.rightClass) || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() || this.$element.parents('.top-bar-right').is('*')) {
+          this.options.alignment = 'right';
+          subs.addClass('opens-left');
+        } else {
+          this.options.alignment = 'left';
+          subs.addClass('opens-right');
+        }
+      } else {
+        if (this.options.alignment === 'right') {
+          subs.addClass('opens-left');
+        } else {
+          subs.addClass('opens-right');
+        }
+      }
+
+      this.changed = false;
+
+      this._events();
+    }
+  }, {
+    key: "_isVertical",
+    value: function _isVertical() {
+      return this.$tabs.css('display') === 'block' || this.$element.css('flex-direction') === 'column';
+    }
+  }, {
+    key: "_isRtl",
+    value: function _isRtl() {
+      return this.$element.hasClass('align-right') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() && !this.$element.hasClass('align-left');
+    }
+    /**
+     * Adds event listeners to elements within the menu
+     * @private
+     * @function
+     */
+
+  }, {
+    key: "_events",
+    value: function _events() {
+      var _this = this,
+          hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined',
+          parClass = 'is-dropdown-submenu-parent'; // used for onClick and in the keyboard handlers
+
+
+      var handleClickFn = function handleClickFn(e) {
+        var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', ".".concat(parClass)),
+            hasSub = $elem.hasClass(parClass),
+            hasClicked = $elem.attr('data-is-click') === 'true',
+            $sub = $elem.children('.is-dropdown-submenu');
+
+        if (hasSub) {
+          if (hasClicked) {
+            if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
+              return;
+            }
+
+            e.preventDefault();
+
+            _this._hide($elem);
+          } else {
+            e.preventDefault();
+
+            _this._show($sub);
+
+            $elem.add($elem.parentsUntil(_this.$element, ".".concat(parClass))).attr('data-is-click', true);
+          }
+        }
+      };
+
+      if (this.options.clickOpen || hasTouch) {
+        this.$menuItems.on('click.zf.dropdownMenu touchstart.zf.dropdownMenu', handleClickFn);
+      } // Handle Leaf element Clicks
+
+
+      if (_this.options.closeOnClickInside) {
+        this.$menuItems.on('click.zf.dropdownMenu', function (e) {
+          var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
+              hasSub = $elem.hasClass(parClass);
+
+          if (!hasSub) {
+            _this._hide();
+          }
+        });
+      }
+
+      if (!this.options.disableHover) {
+        this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
+          var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
+              hasSub = $elem.hasClass(parClass);
+
+          if (hasSub) {
+            clearTimeout($elem.data('_delay'));
+            $elem.data('_delay', setTimeout(function () {
+              _this._show($elem.children('.is-dropdown-submenu'));
+            }, _this.options.hoverDelay));
+          }
+        }).on('mouseleave.zf.dropdownmenu', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["ignoreMousedisappear"])(function (e) {
+          var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
+              hasSub = $elem.hasClass(parClass);
+
+          if (hasSub && _this.options.autoclose) {
+            if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) {
+              return false;
+            }
+
+            clearTimeout($elem.data('_delay'));
+            $elem.data('_delay', setTimeout(function () {
+              _this._hide($elem);
+            }, _this.options.closingTime));
+          }
+        }));
+      }
+
+      this.$menuItems.on('keydown.zf.dropdownMenu', function (e) {
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', '[role="menuitem"]'),
+            isTab = _this.$tabs.index($element) > -1,
+            $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
+            $prevElement,
+            $nextElement;
+        $elements.each(function (i) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
+            $prevElement = $elements.eq(i - 1);
+            $nextElement = $elements.eq(i + 1);
+            return;
+          }
+        });
+
+        var nextSibling = function nextSibling() {
+          $nextElement.children('a:first').focus();
+          e.preventDefault();
+        },
+            prevSibling = function prevSibling() {
+          $prevElement.children('a:first').focus();
+          e.preventDefault();
+        },
+            openSub = function openSub() {
+          var $sub = $element.children('ul.is-dropdown-submenu');
+
+          if ($sub.length) {
+            _this._show($sub);
+
+            $element.find('li > a:first').focus();
+            e.preventDefault();
+          } else {
+            return;
+          }
+        },
+            closeSub = function closeSub() {
+          //if ($element.is(':first-child')) {
+          var close = $element.parent('ul').parent('li');
+          close.children('a:first').focus();
+
+          _this._hide(close);
+
+          e.preventDefault(); //}
+        };
+
+        var functions = {
+          open: openSub,
+          close: function close() {
+            _this._hide(_this.$element);
+
+            _this.$menuItems.eq(0).children('a').focus(); // focus to first element
+
+
+            e.preventDefault();
+          }
+        };
+
+        if (isTab) {
+          if (_this._isVertical()) {
+            // vertical menu
+            if (_this._isRtl()) {
+              // right aligned
+              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+                down: nextSibling,
+                up: prevSibling,
+                next: closeSub,
+                previous: openSub
+              });
+            } else {
+              // left aligned
+              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+                down: nextSibling,
+                up: prevSibling,
+                next: openSub,
+                previous: closeSub
+              });
+            }
+          } else {
+            // horizontal menu
+            if (_this._isRtl()) {
+              // right aligned
+              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+                next: prevSibling,
+                previous: nextSibling,
+                down: openSub,
+                up: closeSub
+              });
+            } else {
+              // left aligned
+              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+                next: nextSibling,
+                previous: prevSibling,
+                down: openSub,
+                up: closeSub
+              });
+            }
+          }
+        } else {
+          // not tabs -> one sub
+          if (_this._isRtl()) {
+            // right aligned
+            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+              next: closeSub,
+              previous: openSub,
+              down: nextSibling,
+              up: prevSibling
+            });
+          } else {
+            // left aligned
+            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+              next: openSub,
+              previous: closeSub,
+              down: nextSibling,
+              up: prevSibling
+            });
+          }
+        }
+
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].handleKey(e, 'DropdownMenu', functions);
+      });
+    }
+    /**
+     * Adds an event handler to the body to close any dropdowns on a click.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_addBodyHandler",
+    value: function _addBodyHandler() {
+      var _this2 = this;
+
+      var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body);
+
+      this._removeBodyHandler();
+
+      $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', function (e) {
+        var isItself = !!jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest(_this2.$element).length;
+        if (isItself) return;
+
+        _this2._hide();
+
+        _this2._removeBodyHandler();
+      });
+    }
+    /**
+     * Remove the body event handler. See `_addBodyHandler`.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_removeBodyHandler",
+    value: function _removeBodyHandler() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdownMenu tap.zf.dropdownMenu');
+    }
+    /**
+     * Opens a dropdown pane, and checks for collisions first.
+     * @param {jQuery} $sub - ul element that is a submenu to show
+     * @function
+     * @private
+     * @fires DropdownMenu#show
+     */
+
+  }, {
+    key: "_show",
+    value: function _show($sub) {
+      var idx = this.$tabs.index(this.$tabs.filter(function (i, el) {
+        return jquery__WEBPACK_IMPORTED_MODULE_0___default()(el).find($sub).length > 0;
+      }));
+      var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
+
+      this._hide($sibs, idx);
+
+      $sub.css('visibility', 'hidden').addClass('js-dropdown-active').parent('li.is-dropdown-submenu-parent').addClass('is-active');
+      var clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__["Box"].ImNotTouchingYou($sub, null, true);
+
+      if (!clear) {
+        var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
+            $parentLi = $sub.parent('.is-dropdown-submenu-parent');
+        $parentLi.removeClass("opens".concat(oldClass)).addClass("opens-".concat(this.options.alignment));
+        clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__["Box"].ImNotTouchingYou($sub, null, true);
+
+        if (!clear) {
+          $parentLi.removeClass("opens-".concat(this.options.alignment)).addClass('opens-inner');
+        }
+
+        this.changed = true;
+      }
+
+      $sub.css('visibility', '');
+
+      if (this.options.closeOnClick) {
+        this._addBodyHandler();
+      }
+      /**
+       * Fires when the new dropdown pane is visible.
+       * @event DropdownMenu#show
+       */
+
+
+      this.$element.trigger('show.zf.dropdownMenu', [$sub]);
+    }
+    /**
+     * Hides a single, currently open dropdown pane, if passed a parameter, otherwise, hides everything.
+     * @function
+     * @param {jQuery} $elem - element with a submenu to hide
+     * @param {Number} idx - index of the $tabs collection to hide
+     * @fires DropdownMenu#hide
+     * @private
+     */
+
+  }, {
+    key: "_hide",
+    value: function _hide($elem, idx) {
+      var $toClose;
+
+      if ($elem && $elem.length) {
+        $toClose = $elem;
+      } else if (typeof idx !== 'undefined') {
+        $toClose = this.$tabs.not(function (i, el) {
+          return i === idx;
+        });
+      } else {
+        $toClose = this.$element;
+      }
+
+      var somethingToClose = $toClose.hasClass('is-active') || $toClose.find('.is-active').length > 0;
+
+      if (somethingToClose) {
+        var $activeItem = $toClose.find('li.is-active');
+        $activeItem.add($toClose).attr({
+          'data-is-click': false
+        }).removeClass('is-active');
+        $toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
+
+        if (this.changed || $toClose.find('opens-inner').length) {
+          var oldClass = this.options.alignment === 'left' ? 'right' : 'left';
+          $toClose.find('li.is-dropdown-submenu-parent').add($toClose).removeClass("opens-inner opens-".concat(this.options.alignment)).addClass("opens-".concat(oldClass));
+          this.changed = false;
+        }
+
+        clearTimeout($activeItem.data('_delay'));
+
+        this._removeBodyHandler();
+        /**
+         * Fires when the open menus are closed.
+         * @event DropdownMenu#hide
+         */
+
+
+        this.$element.trigger('hide.zf.dropdownMenu', [$toClose]);
+      }
+    }
+    /**
+     * Destroys the plugin.
+     * @function
+     */
+
+  }, {
+    key: "_destroy",
+    value: function _destroy() {
+      this.$menuItems.off('.zf.dropdownMenu').removeAttr('data-is-click').removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('.zf.dropdownMenu');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__["Nest"].Burn(this.$element, 'dropdown');
+    }
+  }]);
+
+  return DropdownMenu;
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
+/**
+ * Default settings for plugin
+ */
+
+
+DropdownMenu.defaults = {
+  /**
+   * Disallows hover events from opening submenus
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  disableHover: false,
+
+  /**
+   * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  autoclose: true,
+
+  /**
+   * Amount of time to delay opening a submenu on hover event.
+   * @option
+   * @type {number}
+   * @default 50
+   */
+  hoverDelay: 50,
+
+  /**
+   * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  clickOpen: false,
+
+  /**
+   * Amount of time to delay closing a submenu on a mouseleave event.
+   * @option
+   * @type {number}
+   * @default 500
+   */
+  closingTime: 500,
+
+  /**
+   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'auto'`, `'left'` or `'right'`.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  alignment: 'auto',
+
+  /**
+   * Allow clicks on the body to close any open submenus.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  closeOnClick: true,
+
+  /**
+   * Allow clicks on leaf anchor links to close any open submenus.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  closeOnClickInside: true,
+
+  /**
+   * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
+   * @option
+   * @type {string}
+   * @default 'vertical'
+   */
+  verticalClass: 'vertical',
+
+  /**
+   * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
+   * @option
+   * @type {string}
+   * @default 'align-right'
+   */
+  rightClass: 'align-right',
+
+  /**
+   * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  forceFollow: true
+};
 
 
 /***/ }),
@@ -1677,6 +2872,498 @@ OffCanvas.defaults = {
 
 /***/ }),
 
+/***/ "./node_modules/foundation-sites/js/foundation.positionable.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/foundation-sites/js/foundation.positionable.js ***!
+  \*********************************************************************/
+/*! exports provided: Positionable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Positionable", function() { return Positionable; });
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.util.box */ "./node_modules/foundation-sites/js/foundation.util.box.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./node_modules/foundation-sites/js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./node_modules/foundation-sites/js/foundation.core.utils.js");
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var POSITIONS = ['left', 'right', 'top', 'bottom'];
+var VERTICAL_ALIGNMENTS = ['top', 'bottom', 'center'];
+var HORIZONTAL_ALIGNMENTS = ['left', 'right', 'center'];
+var ALIGNMENTS = {
+  'left': VERTICAL_ALIGNMENTS,
+  'right': VERTICAL_ALIGNMENTS,
+  'top': HORIZONTAL_ALIGNMENTS,
+  'bottom': HORIZONTAL_ALIGNMENTS
+};
+
+function nextItem(item, array) {
+  var currentIdx = array.indexOf(item);
+
+  if (currentIdx === array.length - 1) {
+    return array[0];
+  } else {
+    return array[currentIdx + 1];
+  }
+}
+
+var Positionable =
+/*#__PURE__*/
+function (_Plugin) {
+  _inherits(Positionable, _Plugin);
+
+  function Positionable() {
+    _classCallCheck(this, Positionable);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Positionable).apply(this, arguments));
+  }
+
+  _createClass(Positionable, [{
+    key: "_init",
+
+    /**
+     * Abstract class encapsulating the tether-like explicit positioning logic
+     * including repositioning based on overlap.
+     * Expects classes to define defaults for vOffset, hOffset, position,
+     * alignment, allowOverlap, and allowBottomOverlap. They can do this by
+     * extending the defaults, or (for now recommended due to the way docs are
+     * generated) by explicitly declaring them.
+     *
+     **/
+    value: function _init() {
+      this.triedPositions = {};
+      this.position = this.options.position === 'auto' ? this._getDefaultPosition() : this.options.position;
+      this.alignment = this.options.alignment === 'auto' ? this._getDefaultAlignment() : this.options.alignment;
+      this.originalPosition = this.position;
+      this.originalAlignment = this.alignment;
+    }
+  }, {
+    key: "_getDefaultPosition",
+    value: function _getDefaultPosition() {
+      return 'bottom';
+    }
+  }, {
+    key: "_getDefaultAlignment",
+    value: function _getDefaultAlignment() {
+      switch (this.position) {
+        case 'bottom':
+        case 'top':
+          return Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() ? 'right' : 'left';
+
+        case 'left':
+        case 'right':
+          return 'bottom';
+      }
+    }
+    /**
+     * Adjusts the positionable possible positions by iterating through alignments
+     * and positions.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_reposition",
+    value: function _reposition() {
+      if (this._alignmentsExhausted(this.position)) {
+        this.position = nextItem(this.position, POSITIONS);
+        this.alignment = ALIGNMENTS[this.position][0];
+      } else {
+        this._realign();
+      }
+    }
+    /**
+     * Adjusts the dropdown pane possible positions by iterating through alignments
+     * on the current position.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_realign",
+    value: function _realign() {
+      this._addTriedPosition(this.position, this.alignment);
+
+      this.alignment = nextItem(this.alignment, ALIGNMENTS[this.position]);
+    }
+  }, {
+    key: "_addTriedPosition",
+    value: function _addTriedPosition(position, alignment) {
+      this.triedPositions[position] = this.triedPositions[position] || [];
+      this.triedPositions[position].push(alignment);
+    }
+  }, {
+    key: "_positionsExhausted",
+    value: function _positionsExhausted() {
+      var isExhausted = true;
+
+      for (var i = 0; i < POSITIONS.length; i++) {
+        isExhausted = isExhausted && this._alignmentsExhausted(POSITIONS[i]);
+      }
+
+      return isExhausted;
+    }
+  }, {
+    key: "_alignmentsExhausted",
+    value: function _alignmentsExhausted(position) {
+      return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
+    } // When we're trying to center, we don't want to apply offset that's going to
+    // take us just off center, so wrap around to return 0 for the appropriate
+    // offset in those alignments.  TODO: Figure out if we want to make this
+    // configurable behavior... it feels more intuitive, especially for tooltips, but
+    // it's possible someone might actually want to start from center and then nudge
+    // slightly off.
+
+  }, {
+    key: "_getVOffset",
+    value: function _getVOffset() {
+      return this.options.vOffset;
+    }
+  }, {
+    key: "_getHOffset",
+    value: function _getHOffset() {
+      return this.options.hOffset;
+    }
+  }, {
+    key: "_setPosition",
+    value: function _setPosition($anchor, $element, $parent) {
+      if ($anchor.attr('aria-expanded') === 'false') {
+        return false;
+      }
+
+      if (!this.options.allowOverlap) {
+        // restore original position & alignment before checking overlap
+        this.position = this.originalPosition;
+        this.alignment = this.originalAlignment;
+      }
+
+      $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+
+      if (!this.options.allowOverlap) {
+        var minOverlap = 100000000; // default coordinates to how we start, in case we can't figure out better
+
+        var minCoordinates = {
+          position: this.position,
+          alignment: this.alignment
+        };
+
+        while (!this._positionsExhausted()) {
+          var overlap = _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].OverlapArea($element, $parent, false, false, this.options.allowBottomOverlap);
+
+          if (overlap === 0) {
+            return;
+          }
+
+          if (overlap < minOverlap) {
+            minOverlap = overlap;
+            minCoordinates = {
+              position: this.position,
+              alignment: this.alignment
+            };
+          }
+
+          this._reposition();
+
+          $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+        } // If we get through the entire loop, there was no non-overlapping
+        // position available. Pick the version with least overlap.
+
+
+        this.position = minCoordinates.position;
+        this.alignment = minCoordinates.alignment;
+        $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+      }
+    }
+  }]);
+
+  return Positionable;
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
+
+Positionable.defaults = {
+  /**
+   * Position of positionable relative to anchor. Can be left, right, bottom, top, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  position: 'auto',
+
+  /**
+   * Alignment of positionable relative to anchor. Can be left, right, bottom, top, center, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  alignment: 'auto',
+
+  /**
+   * Allow overlap of container/window. If false, dropdown positionable first
+   * try to position as defined by data-position and data-alignment, but
+   * reposition if it would cause an overflow.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  allowOverlap: false,
+
+  /**
+   * Allow overlap of only the bottom of the container. This is the most common
+   * behavior for dropdowns, allowing the dropdown to extend the bottom of the
+   * screen but not otherwise influence or break out of the container.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  allowBottomOverlap: true,
+
+  /**
+   * Number of pixels the positionable should be separated vertically from anchor
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  vOffset: 0,
+
+  /**
+   * Number of pixels the positionable should be separated horizontally from anchor
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  hOffset: 0
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/foundation-sites/js/foundation.util.box.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/foundation-sites/js/foundation.util.box.js ***!
+  \*****************************************************************/
+/*! exports provided: Box */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Box", function() { return Box; });
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core.utils */ "./node_modules/foundation-sites/js/foundation.core.utils.js");
+
+
+
+var Box = {
+  ImNotTouchingYou: ImNotTouchingYou,
+  OverlapArea: OverlapArea,
+  GetDimensions: GetDimensions,
+  GetExplicitOffsets: GetExplicitOffsets
+};
+/**
+ * Compares the dimensions of an element to a container and determines collision events with container.
+ * @function
+ * @param {jQuery} element - jQuery object to test for collisions.
+ * @param {jQuery} parent - jQuery object to use as bounding container.
+ * @param {Boolean} lrOnly - set to true to check left and right values only.
+ * @param {Boolean} tbOnly - set to true to check top and bottom values only.
+ * @default if no parent object passed, detects collisions with `window`.
+ * @returns {Boolean} - true if collision free, false if a collision in any direction.
+ */
+
+function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
+  return OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) === 0;
+}
+
+;
+
+function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
+  var eleDims = GetDimensions(element),
+      topOver,
+      bottomOver,
+      leftOver,
+      rightOver;
+
+  if (parent) {
+    var parDims = GetDimensions(parent);
+    bottomOver = parDims.height + parDims.offset.top - (eleDims.offset.top + eleDims.height);
+    topOver = eleDims.offset.top - parDims.offset.top;
+    leftOver = eleDims.offset.left - parDims.offset.left;
+    rightOver = parDims.width + parDims.offset.left - (eleDims.offset.left + eleDims.width);
+  } else {
+    bottomOver = eleDims.windowDims.height + eleDims.windowDims.offset.top - (eleDims.offset.top + eleDims.height);
+    topOver = eleDims.offset.top - eleDims.windowDims.offset.top;
+    leftOver = eleDims.offset.left - eleDims.windowDims.offset.left;
+    rightOver = eleDims.windowDims.width - (eleDims.offset.left + eleDims.width);
+  }
+
+  bottomOver = ignoreBottom ? 0 : Math.min(bottomOver, 0);
+  topOver = Math.min(topOver, 0);
+  leftOver = Math.min(leftOver, 0);
+  rightOver = Math.min(rightOver, 0);
+
+  if (lrOnly) {
+    return leftOver + rightOver;
+  }
+
+  if (tbOnly) {
+    return topOver + bottomOver;
+  } // use sum of squares b/c we care about overlap area.
+
+
+  return Math.sqrt(topOver * topOver + bottomOver * bottomOver + leftOver * leftOver + rightOver * rightOver);
+}
+/**
+ * Uses native methods to return an object of dimension values.
+ * @function
+ * @param {jQuery || HTML} element - jQuery object or DOM element for which to get the dimensions. Can be any element other that document or window.
+ * @returns {Object} - nested object of integer pixel values
+ * TODO - if element is window, return only those values.
+ */
+
+
+function GetDimensions(elem) {
+  elem = elem.length ? elem[0] : elem;
+
+  if (elem === window || elem === document) {
+    throw new Error("I'm sorry, Dave. I'm afraid I can't do that.");
+  }
+
+  var rect = elem.getBoundingClientRect(),
+      parRect = elem.parentNode.getBoundingClientRect(),
+      winRect = document.body.getBoundingClientRect(),
+      winY = window.pageYOffset,
+      winX = window.pageXOffset;
+  return {
+    width: rect.width,
+    height: rect.height,
+    offset: {
+      top: rect.top + winY,
+      left: rect.left + winX
+    },
+    parentDims: {
+      width: parRect.width,
+      height: parRect.height,
+      offset: {
+        top: parRect.top + winY,
+        left: parRect.left + winX
+      }
+    },
+    windowDims: {
+      width: winRect.width,
+      height: winRect.height,
+      offset: {
+        top: winY,
+        left: winX
+      }
+    }
+  };
+}
+/**
+ * Returns an object of top and left integer pixel values for dynamically rendered elements,
+ * such as: Tooltip, Reveal, and Dropdown. Maintained for backwards compatibility, and where
+ * you don't know alignment, but generally from
+ * 6.4 forward you should use GetExplicitOffsets, as GetOffsets conflates position and alignment.
+ * @function
+ * @param {jQuery} element - jQuery object for the element being positioned.
+ * @param {jQuery} anchor - jQuery object for the element's anchor point.
+ * @param {String} position - a string relating to the desired position of the element, relative to it's anchor
+ * @param {Number} vOffset - integer pixel value of desired vertical separation between anchor and element.
+ * @param {Number} hOffset - integer pixel value of desired horizontal separation between anchor and element.
+ * @param {Boolean} isOverflow - if a collision event is detected, sets to true to default the element to full width - any desired offset.
+ * TODO alter/rewrite to work with `em` values as well/instead of pixels
+ */
+
+
+function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffset, isOverflow) {
+  var $eleDims = GetDimensions(element),
+      $anchorDims = anchor ? GetDimensions(anchor) : null;
+  var topVal, leftVal; // set position related attribute
+
+  switch (position) {
+    case 'top':
+      topVal = $anchorDims.offset.top - ($eleDims.height + vOffset);
+      break;
+
+    case 'bottom':
+      topVal = $anchorDims.offset.top + $anchorDims.height + vOffset;
+      break;
+
+    case 'left':
+      leftVal = $anchorDims.offset.left - ($eleDims.width + hOffset);
+      break;
+
+    case 'right':
+      leftVal = $anchorDims.offset.left + $anchorDims.width + hOffset;
+      break;
+  } // set alignment related attribute
+
+
+  switch (position) {
+    case 'top':
+    case 'bottom':
+      switch (alignment) {
+        case 'left':
+          leftVal = $anchorDims.offset.left + hOffset;
+          break;
+
+        case 'right':
+          leftVal = $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset;
+          break;
+
+        case 'center':
+          leftVal = isOverflow ? hOffset : $anchorDims.offset.left + $anchorDims.width / 2 - $eleDims.width / 2 + hOffset;
+          break;
+      }
+
+      break;
+
+    case 'right':
+    case 'left':
+      switch (alignment) {
+        case 'bottom':
+          topVal = $anchorDims.offset.top - vOffset + $anchorDims.height - $eleDims.height;
+          break;
+
+        case 'top':
+          topVal = $anchorDims.offset.top + vOffset;
+          break;
+
+        case 'center':
+          topVal = $anchorDims.offset.top + vOffset + $anchorDims.height / 2 - $eleDims.height / 2;
+          break;
+      }
+
+      break;
+  }
+
+  return {
+    top: topVal,
+    left: leftVal
+  };
+}
+
+
+
+/***/ }),
+
 /***/ "./node_modules/foundation-sites/js/foundation.util.keyboard.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/foundation-sites/js/foundation.util.keyboard.js ***!
@@ -2310,6 +3997,288 @@ function animate(isIn, element, animation, cb) {
     element.removeClass("".concat(initClass, " ").concat(activeClass, " ").concat(animation));
   }
 }
+
+
+
+/***/ }),
+
+/***/ "./node_modules/foundation-sites/js/foundation.util.nest.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/foundation-sites/js/foundation.util.nest.js ***!
+  \******************************************************************/
+/*! exports provided: Nest */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nest", function() { return Nest; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+
+
+var Nest = {
+  Feather: function Feather(menu) {
+    var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'zf';
+    menu.attr('role', 'menubar');
+    var items = menu.find('li').attr({
+      'role': 'menuitem'
+    }),
+        subMenuClass = "is-".concat(type, "-submenu"),
+        subItemClass = "".concat(subMenuClass, "-item"),
+        hasSubClass = "is-".concat(type, "-submenu-parent"),
+        applyAria = type !== 'accordion'; // Accordions handle their own ARIA attriutes.
+
+    items.each(function () {
+      var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
+          $sub = $item.children('ul');
+
+      if ($sub.length) {
+        $item.addClass(hasSubClass);
+
+        if (applyAria) {
+          $item.attr({
+            'aria-haspopup': true,
+            'aria-label': $item.children('a:first').text()
+          }); // Note:  Drilldowns behave differently in how they hide, and so need
+          // additional attributes.  We should look if this possibly over-generalized
+          // utility (Nest) is appropriate when we rework menus in 6.4
+
+          if (type === 'drilldown') {
+            $item.attr({
+              'aria-expanded': false
+            });
+          }
+        }
+
+        $sub.addClass("submenu ".concat(subMenuClass)).attr({
+          'data-submenu': '',
+          'role': 'menubar'
+        });
+
+        if (type === 'drilldown') {
+          $sub.attr({
+            'aria-hidden': true
+          });
+        }
+      }
+
+      if ($item.parent('[data-submenu]').length) {
+        $item.addClass("is-submenu-item ".concat(subItemClass));
+      }
+    });
+    return;
+  },
+  Burn: function Burn(menu, type) {
+    var //items = menu.find('li'),
+    subMenuClass = "is-".concat(type, "-submenu"),
+        subItemClass = "".concat(subMenuClass, "-item"),
+        hasSubClass = "is-".concat(type, "-submenu-parent");
+    menu.find('>li, > li > ul, .menu, .menu > li, [data-submenu] > li').removeClass("".concat(subMenuClass, " ").concat(subItemClass, " ").concat(hasSubClass, " is-submenu-item submenu is-active")).removeAttr('data-submenu').css('display', '');
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/foundation-sites/js/foundation.util.touch.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/foundation-sites/js/foundation.util.touch.js ***!
+  \*******************************************************************/
+/*! exports provided: Touch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Touch", function() { return Touch; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+//**************************************************
+//**Work inspired by multiple jquery swipe plugins**
+//**Done by Yohai Ararat ***************************
+//**************************************************
+
+var Touch = {};
+var startPosX,
+    startPosY,
+    startTime,
+    elapsedTime,
+    startEvent,
+    isMoving = false,
+    didMoved = false;
+
+function onTouchEnd(e) {
+  this.removeEventListener('touchmove', onTouchMove);
+  this.removeEventListener('touchend', onTouchEnd); // If the touch did not move, consider it as a "tap"
+
+  if (!didMoved) {
+    var tapEvent = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event('tap', startEvent || e);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger(tapEvent);
+  }
+
+  startEvent = null;
+  isMoving = false;
+  didMoved = false;
+}
+
+function onTouchMove(e) {
+  if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.preventDefault) {
+    e.preventDefault();
+  }
+
+  if (isMoving) {
+    var x = e.touches[0].pageX;
+    var y = e.touches[0].pageY;
+    var dx = startPosX - x;
+    var dy = startPosY - y;
+    var dir;
+    didMoved = true;
+    elapsedTime = new Date().getTime() - startTime;
+
+    if (Math.abs(dx) >= jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.moveThreshold && elapsedTime <= jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.timeThreshold) {
+      dir = dx > 0 ? 'left' : 'right';
+    } // else if(Math.abs(dy) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
+    //   dir = dy > 0 ? 'down' : 'up';
+    // }
+
+
+    if (dir) {
+      e.preventDefault();
+      onTouchEnd.apply(this, arguments);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger(jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event('swipe', Object.assign({}, e)), dir).trigger(jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event("swipe".concat(dir), Object.assign({}, e)));
+    }
+  }
+}
+
+function onTouchStart(e) {
+  if (e.touches.length == 1) {
+    startPosX = e.touches[0].pageX;
+    startPosY = e.touches[0].pageY;
+    startEvent = e;
+    isMoving = true;
+    didMoved = false;
+    startTime = new Date().getTime();
+    this.addEventListener('touchmove', onTouchMove, false);
+    this.addEventListener('touchend', onTouchEnd, false);
+  }
+}
+
+function init() {
+  this.addEventListener && this.addEventListener('touchstart', onTouchStart, false);
+}
+
+function teardown() {
+  this.removeEventListener('touchstart', onTouchStart);
+}
+
+var SpotSwipe =
+/*#__PURE__*/
+function () {
+  function SpotSwipe($) {
+    _classCallCheck(this, SpotSwipe);
+
+    this.version = '1.0.0';
+    this.enabled = 'ontouchstart' in document.documentElement;
+    this.preventDefault = false;
+    this.moveThreshold = 75;
+    this.timeThreshold = 200;
+    this.$ = $;
+
+    this._init();
+  }
+
+  _createClass(SpotSwipe, [{
+    key: "_init",
+    value: function _init() {
+      var $ = this.$;
+      $.event.special.swipe = {
+        setup: init
+      };
+      $.event.special.tap = {
+        setup: init
+      };
+      $.each(['left', 'up', 'down', 'right'], function () {
+        $.event.special["swipe".concat(this)] = {
+          setup: function setup() {
+            $(this).on('swipe', $.noop);
+          }
+        };
+      });
+    }
+  }]);
+
+  return SpotSwipe;
+}();
+/****************************************************
+ * As far as I can tell, both setupSpotSwipe and    *
+ * setupTouchHandler should be idempotent,          *
+ * because they directly replace functions &        *
+ * values, and do not add event handlers directly.  *
+ ****************************************************/
+
+
+Touch.setupSpotSwipe = function ($) {
+  $.spotSwipe = new SpotSwipe($);
+};
+/****************************************************
+ * Method for adding pseudo drag events to elements *
+ ***************************************************/
+
+
+Touch.setupTouchHandler = function ($) {
+  $.fn.addTouch = function () {
+    this.each(function (i, el) {
+      $(el).bind('touchstart touchmove touchend touchcancel', function (event) {
+        //we pass the original event object because the jQuery event
+        //object is normalized to w3c specs and does not provide the TouchList
+        handleTouch(event);
+      });
+    });
+
+    var handleTouch = function handleTouch(event) {
+      var touches = event.changedTouches,
+          first = touches[0],
+          eventTypes = {
+        touchstart: 'mousedown',
+        touchmove: 'mousemove',
+        touchend: 'mouseup'
+      },
+          type = eventTypes[event.type],
+          simulatedEvent;
+
+      if ('MouseEvent' in window && typeof window.MouseEvent === 'function') {
+        simulatedEvent = new window.MouseEvent(type, {
+          'bubbles': true,
+          'cancelable': true,
+          'screenX': first.screenX,
+          'screenY': first.screenY,
+          'clientX': first.clientX,
+          'clientY': first.clientY
+        });
+      } else {
+        simulatedEvent = document.createEvent('MouseEvent');
+        simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0
+        /*left*/
+        , null);
+      }
+
+      first.target.dispatchEvent(simulatedEvent);
+    };
+  };
+};
+
+Touch.init = function ($) {
+  if (typeof $.spotSwipe === 'undefined') {
+    Touch.setupSpotSwipe($);
+    Touch.setupTouchHandler($);
+  }
+};
 
 
 
@@ -11958,61 +13927,113 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "ba-section-cards" }, [
     _c("div", { staticClass: "row align-center" }, [
-      _c(
-        "div",
-        { staticClass: "column large-10 small-12" },
-        [
-          _c("div", { staticClass: "ba-search-filters" }, [
+      _c("div", { staticClass: "column large-10 small-12" }, [
+        _c("div", { staticClass: "ba-search-filters" }, [
+          _c(
+            "button",
+            {
+              staticClass: "button ba-fillters-button",
+              attrs: { type: "button", "data-toggle": "form-dropdown" }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  attrs: {
+                    width: "20",
+                    height: "20",
+                    viewBox: "0 0 20 20",
+                    fill: "none",
+                    xmlns: "http://www.w3.org/2000/svg"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M19.75 18.0625L13.9338 12.2453C14.8711 10.9572 15.3753 9.40488 15.3738 7.81188C15.3738 3.64234 11.9814 0.25 7.81188 0.25C3.64234 0.25 0.25 3.64234 0.25 7.81188C0.25 11.9814 3.64234 15.3738 7.81188 15.3738C9.40488 15.3753 10.9572 14.8711 12.2453 13.9338L18.0625 19.75L19.75 18.0625ZM7.81188 12.9855C6.7885 12.9856 5.78809 12.6822 4.93714 12.1137C4.0862 11.5452 3.42296 10.7371 3.03129 9.79165C2.63961 8.8462 2.53711 7.80583 2.73674 6.80211C2.93637 5.7984 3.42916 4.87643 4.15279 4.15279C4.87643 3.42916 5.7984 2.93637 6.80211 2.73674C7.80583 2.53711 8.8462 2.63961 9.79165 3.03129C10.7371 3.42296 11.5452 4.0862 12.1137 4.93714C12.6822 5.78809 12.9856 6.7885 12.9855 7.81188C12.9839 9.1835 12.4383 10.4985 11.4684 11.4684C10.4985 12.4383 9.1835 12.9839 7.81188 12.9855Z",
+                      fill: "#190078"
+                    }
+                  })
+                ]
+              ),
+              _vm._v("\n\t\t\t\t\tУточнить детали поиска\n\t\t\t\t\t")
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "#" } }, [
             _c(
-              "button",
+              "svg",
               {
-                staticClass: "button",
                 attrs: {
-                  type: "button",
-                  "data-toggle": "example-dropdown-bottom-center"
+                  width: "21",
+                  height: "27",
+                  viewBox: "0 0 21 27",
+                  fill: "none",
+                  xmlns: "http://www.w3.org/2000/svg"
                 }
               },
               [
-                _c("div", { staticClass: "ba-fillters-button" }, [
-                  _c("svg", { attrs: { width: "20", height: "20" } }, [
-                    _c("use", { attrs: { "xlink:href": "#icon-search" } })
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "ba-button-text" }, [
-                    _vm._v("Уточнить детали поиска")
-                  ])
-                ])
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M6.12508 0.375L0.291748 6.20833H4.66675V16.4167H7.58342V6.20833H11.9584L6.12508 0.375ZM16.3334 20.7917V10.5833H13.4167V20.7917H9.04175L14.8751 26.625L20.7084 20.7917H16.3334Z",
+                    fill: "#F2E7FE"
+                  }
+                })
               ]
-            ),
-            _vm._v(" "),
-            _c("div", {
-              staticClass: "dropdown-pane",
-              attrs: {
-                "data-position": "bottom",
-                "data-alignment": "center",
-                id: "example-dropdown-bottom-center",
-                "data-dropdown": "",
-                "data-auto-focus": "true"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _vm._l(_vm.cards, function(card) {
-            return _c("div", { staticClass: "person-card person-card-first" }, [
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "ba-card" },
+          _vm._l(_vm.cards, function(card, index) {
+            return _c("div", { staticClass: "person-card" }, [
               _c("a", { attrs: { href: "#", id: "search" } }, [
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "column large-3" }, [
+                  _c("div", { staticClass: "column large-4" }, [
                     _c("img", { attrs: { src: card.img, alt: card.name } })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "column large-8" }, [
                     _c("div", { staticClass: "ba-person-name" }, [
-                      _vm._v(_vm._s(card.name))
+                      _vm._v(
+                        "\n\t\t\t\t\t\t\t\t\t" +
+                          _vm._s(card.name) +
+                          "\n\n\t\t\t\t\t\t\t\t\t"
+                      ),
+                      card.challenge
+                        ? _c(
+                            "svg",
+                            {
+                              attrs: {
+                                width: "20",
+                                height: "16",
+                                viewBox: "0 0 20 16",
+                                fill: "none",
+                                xmlns: "http://www.w3.org/2000/svg"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M20 6V2C20 0.9 19.1 0 18 0H2C0.9 0 0.00999999 0.9 0.00999999 2V6C1.11 6 2 6.9 2 8C2 9.1 1.11 10 0 10V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V10C18.9 10 18 9.1 18 8C18 6.9 18.9 6 20 6ZM18 4.54C16.81 5.23 16 6.53 16 8C16 9.47 16.81 10.77 18 11.46V14H2V11.46C3.19 10.77 4 9.47 4 8C4 6.52 3.2 5.23 2.01 4.54L2 2H18V4.54ZM7.07 12L10 10.12L12.93 12L12.04 8.64L14.73 6.44L11.26 6.23L10 3L8.73 6.22L5.26 6.43L7.95 8.63L7.07 12Z",
+                                  fill: "#02BEB2"
+                                }
+                              })
+                            ]
+                          )
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "ba-card-info" }, [
                       _c("span", { staticClass: "ba-rating" }, [
-                        _vm._v("★ ★ ★ ★")
+                        _vm._v("★ ★ ★ ★ ")
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "ba-data" }, [
@@ -12072,7 +14093,24 @@ var render = function() {
                               _c("span", { staticClass: "ba-answer" }, [
                                 _vm._v(_vm._s(card.drink))
                               ])
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            card.challenge
+                              ? _c("li", [
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        "ba-value ba-value--challenge"
+                                    },
+                                    [_vm._v("Челендж:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "ba-answer" }, [
+                                    _vm._v(_vm._s(card.challenge))
+                                  ])
+                                ])
+                              : _vm._e()
                           ])
                         ])
                       ])
@@ -12103,16 +14141,149 @@ var render = function() {
                     )
                   ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "ba-button--more" }, [
+                index + 1 === _vm.cards.length
+                  ? _c(
+                      "a",
+                      {
+                        staticClass:
+                          "waves-effect waves-light btn ba-button-more"
+                      },
+                      [_vm._v("еще")]
+                    )
+                  : _vm._e()
               ])
             ])
-          })
-        ],
-        2
-      )
+          }),
+          0
+        )
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "dropdown-pane",
+        attrs: {
+          id: "form-dropdown",
+          "data-dropdown": "",
+          "data-auto-focus": "true"
+        }
+      },
+      [
+        _c("form", { attrs: { action: "#", method: "POST" } }, [
+          _c("label", { attrs: { for: "city" } }, [_vm._v("Город")]),
+          _vm._v(" "),
+          _c("select", { attrs: { id: "city" } }, [
+            _c("option", { attrs: { value: "Киев" } }, [_vm._v("Киев")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Полтава" } }, [_vm._v("Полтава")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Харьков" } }, [_vm._v("Харьков")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Львов" } }, [_vm._v("Львов")]),
+            _vm._v(" "),
+            _c(
+              "option",
+              { attrs: { value: "Где", selected: "", hidden: "" } },
+              [_vm._v("Где")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "date" } }, [_vm._v("Дата")]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "date", id: "date", name: "start", value: "Когда" }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "drink" } }, [_vm._v("Что пить")]),
+          _vm._v(" "),
+          _c("select", { attrs: { id: "drink" } }, [
+            _c("option", { attrs: { value: "Водка" } }, [_vm._v("Водка")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Ром" } }, [_vm._v("Ром")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Виски" } }, [_vm._v("Виски")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Вино" } }, [_vm._v("Вино")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Текила" } }, [_vm._v("Текила")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Пиво" } }, [_vm._v("Пиво")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Настойки" } }, [
+              _vm._v("Настойки")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Коктейли" } }, [
+              _vm._v("Коктейли")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Другое" } }, [_vm._v("Другое")]),
+            _vm._v(" "),
+            _c(
+              "option",
+              { attrs: { value: "Вид алкоголя", selected: "", hidden: "" } },
+              [_vm._v("Вид алкоголя")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "amount" } }, [
+            _vm._v("Количество людей")
+          ]),
+          _vm._v(" "),
+          _c("select", { attrs: { id: "amount" } }, [
+            _c("option", { attrs: { value: "1" } }, [_vm._v("1")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Больше 5" } }, [
+              _vm._v("Больше 5")
+            ]),
+            _vm._v(" "),
+            _c(
+              "option",
+              {
+                attrs: {
+                  value: "Сколько людей хочу найти",
+                  selected: "",
+                  hidden: ""
+                }
+              },
+              [_vm._v("Сколько людей хочу найти")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "challenge" } }, [
+            _c("input", {
+              attrs: {
+                type: "checkbox",
+                name: "challenge",
+                id: "challenge",
+                checked: ""
+              }
+            }),
+            _vm._v("Участвовать в челендже")
+          ])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -12903,7 +15074,7 @@ new Vue({
   components: {
     App: _App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
-});
+}); // var elem = new Foundation.Dropdown(element, options);
 
 /***/ }),
 
@@ -12922,28 +15093,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"]; });
 
 /* harmony import */ var foundation_sites_js_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! foundation-sites/js/foundation.core.utils */ "./node_modules/foundation-sites/js/foundation.core.utils.js");
-/* harmony import */ var foundation_sites_js_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! foundation-sites/js/foundation.util.keyboard */ "./node_modules/foundation-sites/js/foundation.util.keyboard.js");
-/* harmony import */ var foundation_sites_js_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! foundation-sites/js/foundation.util.mediaQuery */ "./node_modules/foundation-sites/js/foundation.util.mediaQuery.js");
-/* harmony import */ var foundation_sites_js_foundation_util_triggers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! foundation-sites/js/foundation.util.triggers */ "./node_modules/foundation-sites/js/foundation.util.triggers.js");
-/* harmony import */ var foundation_sites_js_foundation_offcanvas__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! foundation-sites/js/foundation.offcanvas */ "./node_modules/foundation-sites/js/foundation.offcanvas.js");
+/* harmony import */ var foundation_sites_js_foundation_util_box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! foundation-sites/js/foundation.util.box */ "./node_modules/foundation-sites/js/foundation.util.box.js");
+/* harmony import */ var foundation_sites_js_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! foundation-sites/js/foundation.util.keyboard */ "./node_modules/foundation-sites/js/foundation.util.keyboard.js");
+/* harmony import */ var foundation_sites_js_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! foundation-sites/js/foundation.util.mediaQuery */ "./node_modules/foundation-sites/js/foundation.util.mediaQuery.js");
+/* harmony import */ var foundation_sites_js_foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! foundation-sites/js/foundation.util.touch */ "./node_modules/foundation-sites/js/foundation.util.touch.js");
+/* harmony import */ var foundation_sites_js_foundation_util_triggers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! foundation-sites/js/foundation.util.triggers */ "./node_modules/foundation-sites/js/foundation.util.triggers.js");
+/* harmony import */ var foundation_sites_js_foundation_dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! foundation-sites/js/foundation.dropdown */ "./node_modules/foundation-sites/js/foundation.dropdown.js");
+/* harmony import */ var foundation_sites_js_foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! foundation-sites/js/foundation.dropdownMenu */ "./node_modules/foundation-sites/js/foundation.dropdownMenu.js");
+/* harmony import */ var foundation_sites_js_foundation_offcanvas__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! foundation-sites/js/foundation.offcanvas */ "./node_modules/foundation-sites/js/foundation.offcanvas.js");
 
 
- // import { Box } from 'foundation-sites/js/foundation.util.box'
-// import { onImagesLoaded } from 'foundation-sites/js/foundation.util.imageLoader';
+
+ // import { onImagesLoaded } from 'foundation-sites/js/foundation.util.imageLoader';
 
 
  // import { Motion, Move } from 'foundation-sites/js/foundation.util.motion';
 // import { Nest } from 'foundation-sites/js/foundation.util.nest';
 // import { Timer } from 'foundation-sites/js/foundation.util.timer';
-// import { Touch } from 'foundation-sites/js/foundation.util.touch';
+
 
  // import { Abide } from 'foundation-sites/js/foundation.abide';
 // import { Accordion } from 'foundation-sites/js/foundation.accordion';
 // import { AccordionMenu } from 'foundation-sites/js/foundation.accordionMenu';
 // import { Drilldown } from 'foundation-sites/js/foundation.drilldown';
-// import { Dropdown } from 'foundation-sites/js/foundation.dropdown';
-// import { DropdownMenu } from 'foundation-sites/js/foundation.dropdownMenu';
-// import { Equalizer } from 'foundation-sites/js/foundation.equalizer';
+
+
+ // import { Equalizer } from 'foundation-sites/js/foundation.equalizer';
 // import { Interchange } from 'foundation-sites/js/foundation.interchange';
 // import { Magellan } from 'foundation-sites/js/foundation.magellan';
 
@@ -12966,11 +15141,11 @@ foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].a
 // Foundation.transitionend = CoreUtils.transitionend;
 // Foundation.RegExpEscape = CoreUtils.RegExpEscape;
 // Foundation.onLoad = CoreUtils.onLoad;
-// Foundation.Box = Box;
-// Foundation.onImagesLoaded = onImagesLoaded;
 
-foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Keyboard = foundation_sites_js_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"];
-foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].MediaQuery = foundation_sites_js_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_4__["MediaQuery"]; // Foundation.Motion = Motion;
+foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Box = foundation_sites_js_foundation_util_box__WEBPACK_IMPORTED_MODULE_3__["Box"]; // Foundation.onImagesLoaded = onImagesLoaded;
+
+foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Keyboard = foundation_sites_js_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_4__["Keyboard"];
+foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].MediaQuery = foundation_sites_js_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_5__["MediaQuery"]; // Foundation.Motion = Motion;
 // Foundation.Move = Move;
 // Foundation.Nest = Nest;
 // Foundation.Timer = Timer;
@@ -12978,20 +15153,20 @@ foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].M
 // // so no need to add it to Foundation, just init them.
 // Touch.init($);
 
-foundation_sites_js_foundation_util_triggers__WEBPACK_IMPORTED_MODULE_5__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a, foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"]);
+foundation_sites_js_foundation_util_triggers__WEBPACK_IMPORTED_MODULE_7__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a, foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"]);
 
-foundation_sites_js_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_4__["MediaQuery"]._init(); // Foundation.plugin(Abide, 'Abide');
+foundation_sites_js_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_5__["MediaQuery"]._init(); // Foundation.plugin(Abide, 'Abide');
 // Foundation.plugin(Accordion, 'Accordion');
 // Foundation.plugin(AccordionMenu, 'AccordionMenu');
 // Foundation.plugin(Drilldown, 'Drilldown');
-// Foundation.plugin(Dropdown, 'Dropdown');
-// Foundation.plugin(DropdownMenu, 'DropdownMenu');
+
+
+foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(foundation_sites_js_foundation_dropdown__WEBPACK_IMPORTED_MODULE_8__["Dropdown"], 'Dropdown'); // Foundation.plugin(DropdownMenu, 'DropdownMenu');
 // Foundation.plugin(Equalizer, 'Equalizer');
 // Foundation.plugin(Interchange, 'Interchange');
 // Foundation.plugin(Magellan, 'Magellan');
 
-
-foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(foundation_sites_js_foundation_offcanvas__WEBPACK_IMPORTED_MODULE_6__["OffCanvas"], 'OffCanvas'); // Foundation.plugin(Orbit, 'Orbit');
+foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(foundation_sites_js_foundation_offcanvas__WEBPACK_IMPORTED_MODULE_10__["OffCanvas"], 'OffCanvas'); // Foundation.plugin(Orbit, 'Orbit');
 // Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
 // Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 // Foundation.plugin(Reveal, 'Reveal');
@@ -13841,7 +16016,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Nikita\beetroot\booze-buddy\src\assets\js\app.js */"./src/assets/js/app.js");
+module.exports = __webpack_require__(/*! /Users/viktoria/Vikuska-Programist/beetroot_academy/serv/booze-buddy/src/assets/js/app.js */"./src/assets/js/app.js");
 
 
 /***/ })
