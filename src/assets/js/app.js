@@ -18,5 +18,10 @@ import './lib/slick.min.js';
 
 $(document).foundation();
 
-import cards from '../../../cards.js';
-console.log(cards);
+import App from './App.vue'
+
+new Vue({
+	el: '#search',
+	template: '<App/>',
+	components: {App}
+})
