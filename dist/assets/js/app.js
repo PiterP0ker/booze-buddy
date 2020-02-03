@@ -95,6 +95,19 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+//
+//
+//
+//
+//
 //
 //
 //
@@ -236,14 +249,20 @@ __webpack_require__.r(__webpack_exports__);
 // import json from './json/cards.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
+    isLoading: false;
+
+    isMoreLoading: false;
+
     return {
-      itemsPerPage: 5,
-      cards: []
+      cards: [],
+      cardsDisplayed: []
     };
   },
   methods: {
-    getTotalPages: function getTotalPages() {
-      return Math.ceil(this.cards.length / this.itemsPerPage);
+    loadMore: function loadMore() {
+      var _this$cardsDisplayed;
+
+      (_this$cardsDisplayed = this.cardsDisplayed).push.apply(_this$cardsDisplayed, _toConsumableArray(this.cards.slice(this.cardsDisplayed.length, this.cardsDisplayed.length + 3)));
     }
   },
   mounted: function mounted() {
@@ -253,6 +272,7 @@ __webpack_require__.r(__webpack_exports__);
       return res.json();
     }).then(function (list) {
       _this.cards = list;
+      _this.cardsDisplayed = list.slice(0, 5);
     });
   }
 });
@@ -13991,7 +14011,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "ba-card" },
-          _vm._l(_vm.cards, function(card, index) {
+          _vm._l(_vm.cardsDisplayed, function(card, index) {
             return _c("div", { staticClass: "person-card" }, [
               _c("a", { attrs: { href: "#", id: "search" } }, [
                 _c("div", { staticClass: "row" }, [
@@ -14032,9 +14052,26 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "ba-card-info" }, [
-                      _c("span", { staticClass: "ba-rating" }, [
-                        _vm._v("★ ★ ★ ★ ")
-                      ]),
+                      card.rating
+                        ? _c(
+                            "span",
+                            { staticClass: "ba-rating" },
+                            [
+                              _vm._l(card.rating, function(star) {
+                                return card.rating >= 1
+                                  ? _c("span", [_vm._v("★")])
+                                  : _vm._e()
+                              }),
+                              _vm._v(" "),
+                              _vm._l(_vm.n, function(star) {
+                                return card.rating < 4
+                                  ? _c("span", [_vm._v("☆")])
+                                  : _vm._e()
+                              })
+                            ],
+                            2
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
                       _c("span", { staticClass: "ba-data" }, [
                         _vm._v(_vm._s(card.date))
@@ -14142,14 +14179,22 @@ var render = function() {
                   ])
                 ])
               ]),
-              _vm._v(" "),
+              _vm._v(
+                "\n\t\t\t\t\t" + _vm._s(_vm.cards.length) + "\n\t\t\t\t\t"
+              ),
               _c("div", { staticClass: "ba-button--more" }, [
-                index + 1 === _vm.cards.length
+                index + 1 === _vm.cardsDisplayed.length &&
+                index + 1 !== _vm.cards.length
                   ? _c(
-                      "a",
+                      "button",
                       {
                         staticClass:
-                          "waves-effect waves-light btn ba-button-more"
+                          "waves-effect waves-light btn ba-button-more",
+                        on: {
+                          click: function($event) {
+                            return _vm.loadMore()
+                          }
+                        }
                       },
                       [_vm._v("еще")]
                     )

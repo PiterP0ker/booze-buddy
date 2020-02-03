@@ -6,11 +6,11 @@
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booze Body</title>
+  <title>Single Pages</title>
   <meta name="description" content="">
   <meta name="theme-color" content="#ff5912">
 
-  <meta property="og:title" content="Booze Body" />
+  <meta property="og:title" content="Single Pages" />
   <meta property="og:description" content="" />
   <meta property="og:image" content="" />
   <link rel="stylesheet" href="assets/css/app.css">
@@ -31,7 +31,7 @@
     <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-content-scroll=false>
       <nav>
           <ul class="menu vertical">
-              <li class="active">
+              <li >
                   <a href="index.html">Home</a>
               </li>
           </ul>
@@ -62,160 +62,56 @@
       	<!-- /.row -->
       </header>      
       <main>
-        <section class="section-register">
+        
+        <section class="ba-section-profile">
         	<div class="row">
-        		<div class="column large-6 small-12">
-        			<div class="ba-register">
-        				<h2 class="ba-register__title">
-        					Поможем найти компанию чтобы отлично провести время
-        				</h2>
-        				<a href="search.html" class="ba-button">
-        					Влиться в коллектив
-        				</a>
-        			</div>
+        		<div class="column large-4">
+        			<img src="../assets/img/andrew-card.png" alt="">
         		</div>
-        		<!-- /.column -->
-        	</div>
-        	<!-- /.row -->
-        </section><section class="section-search">
-        	<div class="row">
-        		<div class="column large-6 small-12">
-        			<div class="ba-search">
-        				<h3 class="ba-search__title">
-        					Начните поиск компании и события прямо сейчас
-        				</h3>
-        				
-        				<form action="#" method="POST">
-        					<label for="city">Город</label>
-        					<select id="city">
-        						<option value="Киев">Киев</option>
-        						<option value="Полтава">Полтава</option>
-        						<option value="Харьков">Харьков</option>
-        						<option value="Львов">Львов</option>
-        						<option value="Где" selected hidden>Где</option>
-        					</select>
-        
-        					<label for="date">Дата</label>
-        					<input type="date" id="date" name="start" value="Когда">
-        
-        					<label for="drink">Что пить</label>
-        					<select id="drink">
-        						<option value="Водка">Водка</option>
-        						<option value="Ром">Ром</option>
-        						<option value="Виски">Виски</option>
-        						<option value="Вино">Вино</option>
-        						<option value="Текила">Текила</option>
-        						<option value="Пиво">Пиво</option>
-        						<option value="Настойки">Настойки</option>
-        						<option value="Коктейли">Коктейли</option>
-        						<option value="Другое">Другое</option>
-        						<option value="Вид алкоголя" selected hidden>Вид алкоголя</option>
-        					</select>
-        
-        					<label for="amount">Количество людей</label>
-        					<select id="amount">
-        						<option value="1">1</option>
-        						<option value="2">2</option>
-        						<option value="3">3</option>
-        						<option value="4">4</option>
-        						<option value="5">5</option>
-        						<option value="Больше 5">Больше 5</option>
-        						<option value="Сколько людей хочу найти" selected hidden>Сколько людей хочу найти</option>
-        					</select>
-        
-        					<label for="challenge"><input type="checkbox" name="challenge" id="challenge" checked>Участвовать в
-        						челендже</label>
-        
-        					<div class="ba-challenge">
-        						<div class="ba-challenge__type">
-        							<img src="assets/img/party.jpg" alt="Вечеринка в костюмах">
-        							<p>Вечеринка в костюмах</p>
-        						</div>
-        						<div class="ba-challenge__type">
-        							<img src="assets/img/golden-mile.jpg" alt="Пройти золотую милю">
-        							<p>Пройти золотую милю</p>
-        						</div>
-        						<div class="ba-challenge__type">
-        							<img src="assets/img/last-hero.jpg" alt="Последний герой">
-        							<p>Последний герой</p>
-        						</div>
-        					</div>
-        
-        				</form>
-        				<button type="submit" href="search.html" class="ba-button ba-button--lighter">
-        					Искать
-        				</button>
+        		<div class="column large-7">
+        			<div class="ba-info">
+        				<div class="ba-name"></div>
+        				<div class="ba-data"></div>
         			</div>
+        			<div class="ba-profile-list-info">
+        				<ul class="ba-list--2col">
+        					<li>
+        						<span class="ba-value">О встрече:</span>
+        						<span class="ba-answer"></span>
+        					</li>
+        					<li>
+        						<span class="ba-value">Заведение:</span>
+        						<span class="ba-answer"></span>
+        					</li>
+        					<li>
+        						<span class="ba-value">Компания:</span>
+        						<span class="ba-answer"></span>
+        					</li>
+        					<li>
+        						<span class="ba-value">Повод:</span>
+        						<span class="ba-answer"></span>
+        					</li>
+        					<li>
+        						<span class="ba-value">Напиток:</span>
+        						<span class="ba-answer"></span>
+        					</li>
+        					<li>
+        						<span class="ba-value">Собрано:</span>
+        						<span class="ba-answer"></span>
+        					</li>
+        				</ul>
+        			</div>
+        			<button class="ba-button ba-button-follow">Присоединиться</button>
+        			<h4 class="ba-subtitle">Есть вопросы? Отправьте Андрею сообщение в Telegram или Viber </h4>
+        			<button class="ba-buttom ba-button-mess">написать сообщение</button>
+        			
         		</div>
-        		<!-- /.column -->
+        		<div class="column large-1">
+        			<div class="div">Рейтинг</div>
+        			<div class="ba-rating"></div>
+        		</div>
         	</div>
-        	<!-- /.row -->
-        </section><section class="ba-section-about">
-           <div class="row">
-              <div class="column large-6 hide-for-small-only">
-                 <img src="assets/img/section-about.png"
-                    alt="Booze Buddy поможет вам устроить праздник с кем, когда и где пожелаете">
-              </div>
-              <div class="column large-4 small-12 ba-information">
-                 
-                    <h2 class="ba-title">Booze Buddy поможет вам устроить праздник с кем, когда и где пожелаете</h2>
-        
-                    <ul class="ba-about-list">
-                       <li>Находите новых друзей по интересам</li>
-                       <li>Устраивайте шумные вечеринки на большую компанию </li>
-                       <li>Или уютные посиделки с разговором по душам с подходящим человеком</li>
-                       <li>Организовывайте, а также берите участие в соревнованиях</li>
-                       <li>Просто веселитесь</li>
-                    </ul>
-                 
-              </div>
-           </div>
-        </section><section class="ba-section-proffer">
-           <div class="row">
-              <div class="column large-12">
-                 <h2 class="ba-title">Возможно для вас будут интересными:</h2>
-              </div>
-              <div class="column large-8 small-12 large-offset-2">
-                 <div class="ba-members">
-                    <a href="#">
-                       <div class="ba-member">
-                          <img src="assets/img/member-andrew.png" alt="Андрей">
-                          <h6 class="ba-person-name">Андрей</h6>
-                          <div class="ba-rating">&#9733 &#9733 &#9733 &#9733</div>
-                          <p class="ba-interests hide-for-small-only">Интересы:</p>
-                          <p class="hide-for-small-only">Политика, технологии</p>
-                       </div>
-                       <!-- /.ba-member -->
-                    </a>
-                    <a href="#">
-                       <div class="ba-member">
-                          <img src="assets/img/member-ksenia.png" alt="Ксюша">
-                          <h6 class="ba-person-name">Ксюша</h6>
-                          <span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
-                          <p class="ba-interests hide-for-small-only">Интересы:</p>
-                          <p class="hide-for-small-only">Спорт, вязание</p>
-                       </div>
-                       <!-- /.ba-member -->
-                    </a>
-                    <a href="#">
-                       <div class="ba-member">
-                          <img src="assets/img/member-zina.png" alt="Зинаида">
-                          <h6 class="ba-person-name">Зинаида</h6>
-                          <span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
-                          <p class="ba-interests hide-for-small-only">Интересы:</p>
-                          <p class="hide-for-small-only">Здоровье, космос</p>
-                       </div>
-                       <!-- /.ba-member -->
-                    </a>
-                 </div>
-              </div>
-              <!-- /.column large-8 small-12 -->
-        
-           </div>
-        </section>
-        <!-- /.ba-section-proffer -->
-        
-      </main>
+        </section>      </main>
 
       <footer class="ba-footer">
          <div class="row">

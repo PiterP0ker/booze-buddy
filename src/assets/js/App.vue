@@ -60,7 +60,7 @@
 			</div>
 			<!-- /.ba-search-filters -->
 			<div class="ba-card">
-				<div class="person-card" v-for="(card, index) in cards">
+				<div class="person-card" v-for="(card, index) in cardsDisplayed">
 					<a href="#" id="search">
 						<div class="row">
 							<div class="column large-4">
@@ -76,7 +76,11 @@
 
 								</div>
 								<div class="ba-card-info">
-									<span class="ba-rating">&#9733 &#9733 &#9733 &#9733 </span>
+									<span class="ba-rating" v-if="card.rating">
+										<span v-for="star in card.rating" v-if="card.rating >= 1">&#9733</span>
+										<!-- {n = 4 - card.rating} -->
+										<span v-for="star in n" v-if="card.rating < 4">&#9734</span>
+									</span>
 									<span class="ba-data">{{card.date}}</span>
 								</div>
 								<div class="row">
@@ -123,9 +127,10 @@
 							</div>
 						</div>
 					</a>
+					{{cards.length}}
 					<div class="ba-button--more">
-						<a class="waves-effect waves-light btn ba-button-more" v-if="index + 1 === cards.length">еще</a>
-					</div>	
+						<button class="waves-effect waves-light btn ba-button-more" v-if="index + 1 === cardsDisplayed.length && index + 1 !== cards.length" v-on:click="loadMore()">еще</button>
+					</div>
 				</div>
 				<!-- /.person-card -->
 			</div>
@@ -140,22 +145,28 @@
 	// import json from './json/cards.json';
 export default {
 	data() {
+		isLoading: false;		
+		isMoreLoading: false;
+		
 		return {
-			itemsPerPage: 5,
-			cards: []
+			cards: [],
+			cardsDisplayed: []
 		}
 	},
 	methods:{
-		getTotalPages(){
-			return Math.ceil(this.cards.length/this.itemsPerPage);
+		loadMore(){
+			this.cardsDisplayed.push(
+				...this.cards.slice(this.cardsDisplayed.length, this.cardsDisplayed.length + 3)
+				)
 		} 
 	},
 	mounted(){
 		fetch('assets/json/cards.json')
 		.then(res => res.json())
 		.then(list => {
-			this.cards = list
-		})
+			this.cards = list;
+			this.cardsDisplayed = list.slice(0, 5); 
+		});
 	}
 };
 </script>
