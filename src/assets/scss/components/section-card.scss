@@ -128,21 +128,34 @@
 	.ba-like{
 		position: absolute;
 		right: 55px;
+		top: 70px;
 
-		svg{
-			path{
-				&:hover{
-					fill: red;
+			&:hover{
+				svg{
+					path{
+						fill: red;
+						animation: pulse 0.4s infinite;
+					}
 				}
 			}
+			
+		.is-active{
+			color: red;
+			animation: pulse 0.4s infinite;
 		}
+		
+	}
+	
 
-		&--active{
-			svg{
-				path{	
-					fill: red;
-				}
-			}
+	@keyframes pulse{
+		0%{
+			transform: scale(1);
+		}
+		50%{
+			transform: scale(0.8);
+		}
+		100%{
+			transform: scale(1);
 		}
 	}
 

@@ -8,7 +8,7 @@
 						<path d="M19.75 18.0625L13.9338 12.2453C14.8711 10.9572 15.3753 9.40488 15.3738 7.81188C15.3738 3.64234 11.9814 0.25 7.81188 0.25C3.64234 0.25 0.25 3.64234 0.25 7.81188C0.25 11.9814 3.64234 15.3738 7.81188 15.3738C9.40488 15.3753 10.9572 14.8711 12.2453 13.9338L18.0625 19.75L19.75 18.0625ZM7.81188 12.9855C6.7885 12.9856 5.78809 12.6822 4.93714 12.1137C4.0862 11.5452 3.42296 10.7371 3.03129 9.79165C2.63961 8.8462 2.53711 7.80583 2.73674 6.80211C2.93637 5.7984 3.42916 4.87643 4.15279 4.15279C4.87643 3.42916 5.7984 2.93637 6.80211 2.73674C7.80583 2.53711 8.8462 2.63961 9.79165 3.03129C10.7371 3.42296 11.5452 4.0862 12.1137 4.93714C12.6822 5.78809 12.9856 6.7885 12.9855 7.81188C12.9839 9.1835 12.4383 10.4985 11.4684 11.4684C10.4985 12.4383 9.1835 12.9839 7.81188 12.9855Z" fill="#190078"/>
 					</svg>
 					Уточнить детали поиска
-					</button>
+				</button>
     			<div class="dropdown-pane" id="form-dropdown" data-dropdown data-auto-focus="true">
       			<form action="#" method="POST">
 						<label for="city">Город</label>
@@ -52,16 +52,16 @@
 					</form>
     			</div>
 
-			<a href="#">	
-				<svg width="21" height="27" viewBox="0 0 21 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M6.12508 0.375L0.291748 6.20833H4.66675V16.4167H7.58342V6.20833H11.9584L6.12508 0.375ZM16.3334 20.7917V10.5833H13.4167V20.7917H9.04175L14.8751 26.625L20.7084 20.7917H16.3334Z" fill="#F2E7FE"/>
-				</svg>
-			</a>	
+				<a href="#">	
+					<svg width="21" height="27" viewBox="0 0 21 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M6.12508 0.375L0.291748 6.20833H4.66675V16.4167H7.58342V6.20833H11.9584L6.12508 0.375ZM16.3334 20.7917V10.5833H13.4167V20.7917H9.04175L14.8751 26.625L20.7084 20.7917H16.3334Z" fill="#F2E7FE"/>
+					</svg>
+				</a>	
 			</div>
 			<!-- /.ba-search-filters -->
 			<div class="ba-card">
 				<div class="person-card" v-for="(card, index) in cardsDisplayed">
-					<a href="#" id="search">
+					<a :href="card.url" id="search">
 						<div class="row">
 							<div class="column large-4">
 								<img :src="card.img" :alt="card.name">
@@ -118,15 +118,13 @@
 								</div>
 							</div>
 							<!-- /.column -->
-							<div class="ba-like">
-								<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z"
-										fill="#D7B7FD" />
-								</svg>
-							</div>
 						</div>
 					</a>
+					<div class="ba-like">
+						<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z" fill="#D7B7FD"/>
+						</svg>
+					</div>
 					{{cards.length}}
 					<div class="ba-button--more">
 						<button class="waves-effect waves-light btn ba-button-more" v-if="index + 1 === cardsDisplayed.length && index + 1 !== cards.length" v-on:click="loadMore()">еще</button>
@@ -166,7 +164,13 @@ export default {
 		.then(list => {
 			this.cards = list;
 			this.cardsDisplayed = list.slice(0, 5); 
+			let element = $('#form-dropdown');
+			console.log(element);
+			
+			var elem = new Foundation.Dropdown(element);
+
 		});
 	}
 };
+
 </script>

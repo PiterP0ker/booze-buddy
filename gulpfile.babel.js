@@ -107,6 +107,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 let webpackConfig = {
 	mode: (PRODUCTION ? 'production' : 'development'),
+	externals: {
+		foundation: 'Foundation'
+	 },
 	module: {
 	  rules: [
 		 {

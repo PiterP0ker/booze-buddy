@@ -244,8 +244,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
-//
-//
 // import json from './json/cards.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -273,6 +271,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     }).then(function (list) {
       _this.cards = list;
       _this.cardsDisplayed = list.slice(0, 5);
+      var element = $('#form-dropdown');
+      console.log(element);
+      var elem = new Foundation.Dropdown(element);
     });
   }
 });
@@ -13977,7 +13978,7 @@ var render = function() {
                   })
                 ]
               ),
-              _vm._v("\n\t\t\t\t\tУточнить детали поиска\n\t\t\t\t\t")
+              _vm._v("\n\t\t\t\t\tУточнить детали поиска\n\t\t\t\t")
             ]
           ),
           _vm._v(" "),
@@ -14013,7 +14014,7 @@ var render = function() {
           { staticClass: "ba-card" },
           _vm._l(_vm.cardsDisplayed, function(card, index) {
             return _c("div", { staticClass: "person-card" }, [
-              _c("a", { attrs: { href: "#", id: "search" } }, [
+              _c("a", { attrs: { href: card.url, id: "search" } }, [
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "column large-4" }, [
                     _c("img", { attrs: { src: card.img, alt: card.name } })
@@ -14152,32 +14153,32 @@ var render = function() {
                         ])
                       ])
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "ba-like" }, [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          width: "21",
-                          height: "20",
-                          viewBox: "0 0 21 20",
-                          fill: "none",
-                          xmlns: "http://www.w3.org/2000/svg"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z",
-                            fill: "#D7B7FD"
-                          }
-                        })
-                      ]
-                    )
                   ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "ba-like" }, [
+                _c(
+                  "svg",
+                  {
+                    attrs: {
+                      width: "21",
+                      height: "20",
+                      viewBox: "0 0 21 20",
+                      fill: "none",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z",
+                        fill: "#D7B7FD"
+                      }
+                    })
+                  ]
+                )
               ]),
               _vm._v(
                 "\n\t\t\t\t\t" + _vm._s(_vm.cards.length) + "\n\t\t\t\t\t"
@@ -15105,7 +15106,8 @@ __webpack_require__.r(__webpack_exports__);
 // This is why we have to use CommonJS require() here since it doesn't
 // have the hoisting behavior.
 
-window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a; // require('foundation-sites');
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a; // require('foundation-sites');
 // If you want to pick and choose which modules to include, comment out the above and uncomment
 // the line below
 
