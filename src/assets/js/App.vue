@@ -178,6 +178,7 @@ export default {
 				}
 				return found;
 			});
+			console.log(result);
 		},
 		changeCity(event){
 			this.filters.city = event.target.value;
