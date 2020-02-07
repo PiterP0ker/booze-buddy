@@ -243,7 +243,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
-//
 // import json from './json/cards.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -253,7 +252,12 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     return {
       cards: [],
-      cardsDisplayed: []
+      cardsDisplayed: [],
+      filters: {
+        city: "",
+        drink: "",
+        company: ""
+      }
     };
   },
   methods: {
@@ -261,6 +265,35 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var _this$cardsDisplayed;
 
       (_this$cardsDisplayed = this.cardsDisplayed).push.apply(_this$cardsDisplayed, _toConsumableArray(this.cards.slice(this.cardsDisplayed.length, this.cardsDisplayed.length + 3)));
+    },
+    filter: function filter() {
+      var cards = this.cards;
+      var filters = this.filters;
+      if (this.filters.city === '') delete filters.city;
+      if (this.filters.drink === '') delete filters.drink;
+      if (this.filters.company === '') delete filters.company;
+      console.log(filters);
+      var result = cards.filter(function (card) {
+        var found = null;
+
+        for (var f in filters) {
+          found = card[f] === filters[f] && found !== false;
+        }
+
+        return found;
+      });
+    },
+    changeCity: function changeCity(event) {
+      this.filters.city = event.target.value;
+      this.filter();
+    },
+    changeDrink: function changeDrink(event) {
+      this.filters.drink = event.target.value;
+      this.filter();
+    },
+    changeCompany: function changeCompany(event) {
+      this.filters.company = event.target.value;
+      this.filter();
     }
   },
   mounted: function mounted() {
@@ -13982,31 +14015,184 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "#" } }, [
-            _c(
-              "svg",
-              {
-                attrs: {
-                  width: "21",
-                  height: "27",
-                  viewBox: "0 0 21 27",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg"
-                }
-              },
-              [
-                _c("path", {
+          _c(
+            "div",
+            {
+              staticClass: "dropdown-pane",
+              attrs: {
+                id: "form-dropdown",
+                "data-dropdown": "",
+                "data-auto-focus": "true"
+              }
+            },
+            [
+              _c("form", { attrs: { action: "#", method: "POST" } }, [
+                _c("label", { attrs: { for: "city" } }, [_vm._v("Город")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  { attrs: { id: "city" }, on: { change: _vm.changeCity } },
+                  [
+                    _c("option", { attrs: { value: "Киев" } }, [
+                      _vm._v("Киев")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Полтава" } }, [
+                      _vm._v("Полтава")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Харьков" } }, [
+                      _vm._v("Харьков")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Львов" } }, [
+                      _vm._v("Львов")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "option",
+                      { attrs: { value: "Где", selected: "", hidden: "" } },
+                      [_vm._v("Где")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "date" } }, [_vm._v("Дата")]),
+                _vm._v(" "),
+                _c("input", {
                   attrs: {
-                    d:
-                      "M6.12508 0.375L0.291748 6.20833H4.66675V16.4167H7.58342V6.20833H11.9584L6.12508 0.375ZM16.3334 20.7917V10.5833H13.4167V20.7917H9.04175L14.8751 26.625L20.7084 20.7917H16.3334Z",
-                    fill: "#F2E7FE"
+                    type: "date",
+                    id: "date",
+                    name: "start",
+                    value: "Когда"
                   }
-                })
-              ]
-            )
-          ])
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "drink" } }, [_vm._v("Что пить")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  { attrs: { id: "drink" }, on: { change: _vm.changeDrink } },
+                  [
+                    _c("option", { attrs: { value: "Водка" } }, [
+                      _vm._v("Водка")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Ром" } }, [_vm._v("Ром")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Виски" } }, [
+                      _vm._v("Виски")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Вино" } }, [
+                      _vm._v("Вино")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Текила" } }, [
+                      _vm._v("Текила")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Пиво" } }, [
+                      _vm._v("Пиво")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Настойки" } }, [
+                      _vm._v("Настойки")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Коктейли" } }, [
+                      _vm._v("Коктейли")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Другое" } }, [
+                      _vm._v("Другое")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          value: "Вид алкоголя",
+                          selected: "",
+                          hidden: ""
+                        }
+                      },
+                      [_vm._v("Вид алкоголя")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "amount" } }, [
+                  _vm._v("Количество людей")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    attrs: { id: "amount" },
+                    on: { change: _vm.changeCompany }
+                  },
+                  [
+                    _c("option", { attrs: { value: "1" } }, [_vm._v("1")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "Больше 5" } }, [
+                      _vm._v("Больше 5")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          value: "Сколько людей хочу найти",
+                          selected: "",
+                          hidden: ""
+                        }
+                      },
+                      [_vm._v("Сколько людей хочу найти")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            { staticClass: "hide-for-small-only", attrs: { href: "#" } },
+            [
+              _c(
+                "svg",
+                {
+                  attrs: {
+                    width: "21",
+                    height: "27",
+                    viewBox: "0 0 21 27",
+                    fill: "none",
+                    xmlns: "http://www.w3.org/2000/svg"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M6.12508 0.375L0.291748 6.20833H4.66675V16.4167H7.58342V6.20833H11.9584L6.12508 0.375ZM16.3334 20.7917V10.5833H13.4167V20.7917H9.04175L14.8751 26.625L20.7084 20.7917H16.3334Z",
+                      fill: "#F2E7FE"
+                    }
+                  })
+                ]
+              )
+            ]
+          )
         ]),
         _vm._v(" "),
         _c(
@@ -14016,7 +14202,7 @@ var render = function() {
             return _c("div", { staticClass: "person-card" }, [
               _c("a", { attrs: { href: card.url, id: "search" } }, [
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "column large-4" }, [
+                  _c("div", { staticClass: "column large-4 small-4" }, [
                     _c("img", { attrs: { src: card.img, alt: card.name } })
                   ]),
                   _vm._v(" "),
@@ -14055,7 +14241,7 @@ var render = function() {
                     _c("div", { staticClass: "ba-card-info" }, [
                       card.rating
                         ? _c(
-                            "span",
+                            "div",
                             { staticClass: "ba-rating" },
                             [
                               _vm._l(card.rating, function(star) {
@@ -14074,7 +14260,7 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      _c("span", { staticClass: "ba-data" }, [
+                      _c("div", { staticClass: "ba-data" }, [
                         _vm._v(_vm._s(card.date))
                       ])
                     ]),
@@ -14180,9 +14366,7 @@ var render = function() {
                   ]
                 )
               ]),
-              _vm._v(
-                "\n\t\t\t\t\t" + _vm._s(_vm.cards.length) + "\n\t\t\t\t\t"
-              ),
+              _vm._v(" "),
               _c("div", { staticClass: "ba-button--more" }, [
                 index + 1 === _vm.cardsDisplayed.length &&
                 index + 1 !== _vm.cards.length
@@ -14214,120 +14398,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "dropdown-pane",
+    return _c("label", { attrs: { for: "challenge" } }, [
+      _c("input", {
         attrs: {
-          id: "form-dropdown",
-          "data-dropdown": "",
-          "data-auto-focus": "true"
+          type: "checkbox",
+          name: "challenge",
+          id: "challenge",
+          checked: ""
         }
-      },
-      [
-        _c("form", { attrs: { action: "#", method: "POST" } }, [
-          _c("label", { attrs: { for: "city" } }, [_vm._v("Город")]),
-          _vm._v(" "),
-          _c("select", { attrs: { id: "city" } }, [
-            _c("option", { attrs: { value: "Киев" } }, [_vm._v("Киев")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Полтава" } }, [_vm._v("Полтава")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Харьков" } }, [_vm._v("Харьков")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Львов" } }, [_vm._v("Львов")]),
-            _vm._v(" "),
-            _c(
-              "option",
-              { attrs: { value: "Где", selected: "", hidden: "" } },
-              [_vm._v("Где")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "date" } }, [_vm._v("Дата")]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "date", id: "date", name: "start", value: "Когда" }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "drink" } }, [_vm._v("Что пить")]),
-          _vm._v(" "),
-          _c("select", { attrs: { id: "drink" } }, [
-            _c("option", { attrs: { value: "Водка" } }, [_vm._v("Водка")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Ром" } }, [_vm._v("Ром")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Виски" } }, [_vm._v("Виски")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Вино" } }, [_vm._v("Вино")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Текила" } }, [_vm._v("Текила")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Пиво" } }, [_vm._v("Пиво")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Настойки" } }, [
-              _vm._v("Настойки")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Коктейли" } }, [
-              _vm._v("Коктейли")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Другое" } }, [_vm._v("Другое")]),
-            _vm._v(" "),
-            _c(
-              "option",
-              { attrs: { value: "Вид алкоголя", selected: "", hidden: "" } },
-              [_vm._v("Вид алкоголя")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "amount" } }, [
-            _vm._v("Количество людей")
-          ]),
-          _vm._v(" "),
-          _c("select", { attrs: { id: "amount" } }, [
-            _c("option", { attrs: { value: "1" } }, [_vm._v("1")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Больше 5" } }, [
-              _vm._v("Больше 5")
-            ]),
-            _vm._v(" "),
-            _c(
-              "option",
-              {
-                attrs: {
-                  value: "Сколько людей хочу найти",
-                  selected: "",
-                  hidden: ""
-                }
-              },
-              [_vm._v("Сколько людей хочу найти")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "challenge" } }, [
-            _c("input", {
-              attrs: {
-                type: "checkbox",
-                name: "challenge",
-                id: "challenge",
-                checked: ""
-              }
-            }),
-            _vm._v("Участвовать в челендже")
-          ])
-        ])
-      ]
-    )
+      }),
+      _vm._v("Участвовать в челендже")
+    ])
   }
 ]
 render._withStripped = true
