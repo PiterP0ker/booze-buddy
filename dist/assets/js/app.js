@@ -244,6 +244,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
 // import json from './json/cards.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -261,7 +262,104 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var _this$cardsDisplayed;
 
       (_this$cardsDisplayed = this.cardsDisplayed).push.apply(_this$cardsDisplayed, _toConsumableArray(this.cards.slice(this.cardsDisplayed.length, this.cardsDisplayed.length + 3)));
+    },
+    showSinglePage: function showSinglePage(id) {
+      localStorage.singelPageId = id;
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    fetch("assets/json/cards.json").then(function (res) {
+      return res.json();
+    }).then(function (list) {
+      _this.cards = list;
+      _this.cardsDisplayed = list.slice(0, 5);
+      var element = $("#form-dropdown");
+
+      if (element.length > 0) {
+        var elem = new Foundation.Dropdown(element);
+      }
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/assets/js/Single.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--0!./node_modules/vue-loader/lib??vue-loader-options!./src/assets/js/Single.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import json from './json/cards.json';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      card: {}
+    };
   },
   mounted: function mounted() {
     var _this = this;
@@ -269,11 +367,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     fetch('assets/json/cards.json').then(function (res) {
       return res.json();
     }).then(function (list) {
-      _this.cards = list;
-      _this.cardsDisplayed = list.slice(0, 5);
-      var element = $('#form-dropdown');
-      console.log(element);
-      var elem = new Foundation.Dropdown(element);
+      _this.card = list.filter(function (item) {
+        return item.id === localStorage.singelPageId;
+      })[0];
     });
   }
 });
@@ -296,7 +392,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./node_modules/foundation-sites/js/foundation.util.mediaQuery.js");
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
 
@@ -952,7 +1048,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.touch */ "./node_modules/foundation-sites/js/foundation.util.touch.js");
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1495,7 +1591,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.util.touch */ "./node_modules/foundation-sites/js/foundation.util.touch.js");
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2085,7 +2181,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.triggers */ "./node_modules/foundation-sites/js/foundation.util.triggers.js");
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2908,7 +3004,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./node_modules/foundation-sites/js/foundation.core.utils.js");
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3581,7 +3677,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -4321,7 +4417,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./node_modules/foundation-sites/js/foundation.util.motion.js");
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
 
@@ -4607,7 +4703,7 @@ Triggers.init = function ($, Foundation) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*!
  * jQuery JavaScript Library v3.4.1
@@ -14014,148 +14110,162 @@ var render = function() {
           { staticClass: "ba-card" },
           _vm._l(_vm.cardsDisplayed, function(card, index) {
             return _c("div", { staticClass: "person-card" }, [
-              _c("a", { attrs: { href: card.url, id: "search" } }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "column large-4" }, [
-                    _c("img", { attrs: { src: card.img, alt: card.name } })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "column large-8" }, [
-                    _c("div", { staticClass: "ba-person-name" }, [
-                      _vm._v(
-                        "\n\t\t\t\t\t\t\t\t\t" +
-                          _vm._s(card.name) +
-                          "\n\n\t\t\t\t\t\t\t\t\t"
-                      ),
-                      card.challenge
-                        ? _c(
-                            "svg",
-                            {
-                              attrs: {
-                                width: "20",
-                                height: "16",
-                                viewBox: "0 0 20 16",
-                                fill: "none",
-                                xmlns: "http://www.w3.org/2000/svg"
-                              }
-                            },
-                            [
-                              _c("path", {
+              _c(
+                "a",
+                {
+                  attrs: { href: card.url, id: "search" },
+                  on: {
+                    click: function($event) {
+                      return _vm.showSinglePage(card.id)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "column large-4" }, [
+                      _c("img", {
+                        staticClass: "ba-person-card-img",
+                        attrs: { src: card.img, alt: card.name }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "column large-8" }, [
+                      _c("div", { staticClass: "ba-person-name" }, [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(card.name) +
+                            "\n\n\t\t\t\t\t\t\t\t\t"
+                        ),
+                        card.challenge
+                          ? _c(
+                              "svg",
+                              {
                                 attrs: {
-                                  d:
-                                    "M20 6V2C20 0.9 19.1 0 18 0H2C0.9 0 0.00999999 0.9 0.00999999 2V6C1.11 6 2 6.9 2 8C2 9.1 1.11 10 0 10V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V10C18.9 10 18 9.1 18 8C18 6.9 18.9 6 20 6ZM18 4.54C16.81 5.23 16 6.53 16 8C16 9.47 16.81 10.77 18 11.46V14H2V11.46C3.19 10.77 4 9.47 4 8C4 6.52 3.2 5.23 2.01 4.54L2 2H18V4.54ZM7.07 12L10 10.12L12.93 12L12.04 8.64L14.73 6.44L11.26 6.23L10 3L8.73 6.22L5.26 6.43L7.95 8.63L7.07 12Z",
-                                  fill: "#02BEB2"
+                                  width: "20",
+                                  height: "16",
+                                  viewBox: "0 0 20 16",
+                                  fill: "none",
+                                  xmlns: "http://www.w3.org/2000/svg"
                                 }
-                              })
-                            ]
-                          )
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ba-card-info" }, [
-                      card.rating
-                        ? _c(
-                            "span",
-                            { staticClass: "ba-rating" },
-                            [
-                              _vm._l(card.rating, function(star) {
-                                return card.rating >= 1
-                                  ? _c("span", [_vm._v("★")])
-                                  : _vm._e()
-                              }),
-                              _vm._v(" "),
-                              _vm._l(_vm.n, function(star) {
-                                return card.rating < 4
-                                  ? _c("span", [_vm._v("☆")])
-                                  : _vm._e()
-                              })
-                            ],
-                            2
-                          )
-                        : _vm._e(),
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M20 6V2C20 0.9 19.1 0 18 0H2C0.9 0 0.00999999 0.9 0.00999999 2V6C1.11 6 2 6.9 2 8C2 9.1 1.11 10 0 10V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V10C18.9 10 18 9.1 18 8C18 6.9 18.9 6 20 6ZM18 4.54C16.81 5.23 16 6.53 16 8C16 9.47 16.81 10.77 18 11.46V14H2V11.46C3.19 10.77 4 9.47 4 8C4 6.52 3.2 5.23 2.01 4.54L2 2H18V4.54ZM7.07 12L10 10.12L12.93 12L12.04 8.64L14.73 6.44L11.26 6.23L10 3L8.73 6.22L5.26 6.43L7.95 8.63L7.07 12Z",
+                                    fill: "#02BEB2"
+                                  }
+                                })
+                              ]
+                            )
+                          : _vm._e()
+                      ]),
                       _vm._v(" "),
-                      _c("span", { staticClass: "ba-data" }, [
-                        _vm._v(_vm._s(card.date))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "column" }, [
-                        _c("div", { staticClass: "ba-person-list-info" }, [
-                          _c("ul", { staticClass: "ba-list--2col" }, [
-                            _c("li", [
-                              _c("span", { staticClass: "ba-value" }, [
-                                _vm._v("Город:")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "ba-answer" }, [
-                                _vm._v(_vm._s(card.city))
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("li", [
-                              _c("span", { staticClass: "ba-value" }, [
-                                _vm._v("Повод:")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "ba-answer" }, [
-                                _vm._v(_vm._s(card.reason))
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("li", [
-                              _c("span", { staticClass: "ba-value" }, [
-                                _vm._v("Компания:")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "ba-answer" }, [
-                                _vm._v(_vm._s(card.company))
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("li", [
-                              _c("span", { staticClass: "ba-value" }, [
-                                _vm._v("Заведение:")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "ba-answer" }, [
-                                _vm._v(_vm._s(card.place))
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("li", [
-                              _c("span", { staticClass: "ba-value" }, [
-                                _vm._v("Напиток:")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "ba-answer" }, [
-                                _vm._v(_vm._s(card.drink))
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            card.challenge
-                              ? _c("li", [
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass:
-                                        "ba-value ba-value--challenge"
-                                    },
-                                    [_vm._v("Челендж:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "ba-answer" }, [
-                                    _vm._v(_vm._s(card.challenge))
-                                  ])
+                      _c("div", { staticClass: "ba-card-info" }, [
+                        card.rating
+                          ? _c(
+                              "span",
+                              { staticClass: "ba-rating" },
+                              [
+                                _vm._l(card.rating, function(star) {
+                                  return card.rating >= 1
+                                    ? _c("span", [_vm._v("★")])
+                                    : _vm._e()
+                                }),
+                                _vm._v(" "),
+                                _vm._l(_vm.n, function(star) {
+                                  return card.rating < 4
+                                    ? _c("span", [_vm._v("☆")])
+                                    : _vm._e()
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "ba-data" }, [
+                          _vm._v(_vm._s(card.date))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "column" }, [
+                          _c("div", { staticClass: "ba-person-list-info" }, [
+                            _c("ul", { staticClass: "ba-list--2col" }, [
+                              _c("li", [
+                                _c("span", { staticClass: "ba-value" }, [
+                                  _vm._v("Город:")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "ba-answer" }, [
+                                  _vm._v(_vm._s(card.city))
                                 ])
-                              : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c("span", { staticClass: "ba-value" }, [
+                                  _vm._v("Повод:")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "ba-answer" }, [
+                                  _vm._v(_vm._s(card.reason))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c("span", { staticClass: "ba-value" }, [
+                                  _vm._v("Компания:")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "ba-answer" }, [
+                                  _vm._v(_vm._s(card.company))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c("span", { staticClass: "ba-value" }, [
+                                  _vm._v("Заведение:")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "ba-answer" }, [
+                                  _vm._v(_vm._s(card.place))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c("span", { staticClass: "ba-value" }, [
+                                  _vm._v("Напиток:")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "ba-answer" }, [
+                                  _vm._v(_vm._s(card.drink))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              card.challenge
+                                ? _c("li", [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "ba-value ba-value--challenge"
+                                      },
+                                      [_vm._v("Челендж:")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("span", { staticClass: "ba-answer" }, [
+                                      _vm._v(_vm._s(card.challenge))
+                                    ])
+                                  ])
+                                : _vm._e()
+                            ])
                           ])
                         ])
                       ])
                     ])
                   ])
-                ])
-              ]),
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "ba-like" }, [
                 _c(
@@ -14336,6 +14446,136 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/assets/js/Single.vue?vue&type=template&id=0c80473b&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/assets/js/Single.vue?vue&type=template&id=0c80473b& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "ba-section-profile" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "column large-4" }, [
+        _c("img", {
+          staticClass: "ba-section-profile-img",
+          attrs: { src: _vm.card.img, alt: _vm.card.name }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column large-7" }, [
+        _c("div", { staticClass: "ba-card-info" }, [
+          _c("span", { staticClass: "ba-person-name" }, [
+            _vm._v(_vm._s(_vm.card.name))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "ba-data" }, [
+            _vm._v(_vm._s(_vm.card.date))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ba-reason" }, [
+          _vm._v(_vm._s(_vm.card.reason))
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ba-profile-list-info" }, [
+          _c("ul", { staticClass: "ba-list--2col" }, [
+            _c("li", [
+              _c("span", { staticClass: "ba-value" }, [_vm._v("О встрече:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "ba-answer" }, [
+                _vm._v(_vm._s(_vm.card.info))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("span", { staticClass: "ba-value" }, [_vm._v("Заведение:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "ba-answer" }, [
+                _vm._v(_vm._s(_vm.card.place))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("span", { staticClass: "ba-value" }, [_vm._v("Компания:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "ba-answer" }, [
+                _vm._v(_vm._s(_vm.card.company))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("span", { staticClass: "ba-value" }, [_vm._v("Повод:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "ba-answer" }, [
+                _vm._v(_vm._s(_vm.card.reason))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("span", { staticClass: "ba-value" }, [_vm._v("Напиток:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "ba-answer" }, [
+                _vm._v(_vm._s(_vm.card.drink))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("span", { staticClass: "ba-value" }, [_vm._v("Собрано:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "ba-answer" }, [
+                _vm._v(_vm._s(_vm.card.people))
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column large-1" }, [
+        _c("div", { staticClass: "div" }, [_vm._v("Рейтинг")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ba-rating" }, [
+          _vm._v(_vm._s(_vm.card.rating))
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column large-6 large-offset-4" }, [
+      _c("div", { staticClass: "ba-contact" }, [
+        _c("div", { staticClass: "ba-button-follow large-offset-4" }, [
+          _c("button", { staticClass: "ba-button" }, [_vm._v("Присоединиться")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ba-send-message" }, [
+          _vm._v(
+            "\n            Есть вопросы? Отправьте Андрею сообщение в Telegram или Viber\n          "
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -14484,7 +14724,7 @@ module.exports = function (module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**
  * what-input - A global utility for tracking the current input method (mouse, keyboard or touch).
@@ -15082,6 +15322,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/assets/js/Single.vue":
+/*!**********************************!*\
+  !*** ./src/assets/js/Single.vue ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Single_vue_vue_type_template_id_0c80473b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Single.vue?vue&type=template&id=0c80473b& */ "./src/assets/js/Single.vue?vue&type=template&id=0c80473b&");
+/* harmony import */ var _Single_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Single.vue?vue&type=script&lang=js& */ "./src/assets/js/Single.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Single_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Single_vue_vue_type_template_id_0c80473b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Single_vue_vue_type_template_id_0c80473b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/assets/js/Single.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/assets/js/Single.vue?vue&type=script&lang=js&":
+/*!***********************************************************!*\
+  !*** ./src/assets/js/Single.vue?vue&type=script&lang=js& ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Single_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--0!../../../node_modules/vue-loader/lib??vue-loader-options!./Single.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/assets/js/Single.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Single_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./src/assets/js/Single.vue?vue&type=template&id=0c80473b&":
+/*!*****************************************************************!*\
+  !*** ./src/assets/js/Single.vue?vue&type=template&id=0c80473b& ***!
+  \*****************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Single_vue_vue_type_template_id_0c80473b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Single.vue?vue&type=template&id=0c80473b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/assets/js/Single.vue?vue&type=template&id=0c80473b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Single_vue_vue_type_template_id_0c80473b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Single_vue_vue_type_template_id_0c80473b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./src/assets/js/app.js":
 /*!******************************!*\
   !*** ./src/assets/js/app.js ***!
@@ -15099,6 +15408,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_slick_min_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/slick.min.js */ "./src/assets/js/lib/slick.min.js");
 /* harmony import */ var _lib_slick_min_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_lib_slick_min_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.vue */ "./src/assets/js/App.vue");
+/* harmony import */ var _Single_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Single.vue */ "./src/assets/js/Single.vue");
 
  // Foundation JS relies on a global varaible. In ES6, all imports are hoisted
 // to the top of the file so if we used`import` to import Foundation,
@@ -15115,11 +15425,19 @@ window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a; // require('foundation
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).foundation();
 
+
 new Vue({
   el: '#search',
   template: '<App/>',
   components: {
     App: _App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }
+});
+new Vue({
+  el: '#single-page',
+  template: '<Single/>',
+  components: {
+    Single: _Single_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 }); // var elem = new Foundation.Dropdown(element, options);
 
@@ -15236,7 +15554,7 @@ foundation_sites_js_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].p
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 !function (i) {
   "use strict";
@@ -16063,7 +16381,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/viktoria/Vikuska-Programist/beetroot_academy/serv/booze-buddy/src/assets/js/app.js */"./src/assets/js/app.js");
+module.exports = __webpack_require__(/*! g:\programming\beetroot\booze-buddy\src\assets\js\app.js */"./src/assets/js/app.js");
 
 
 /***/ })

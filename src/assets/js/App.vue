@@ -61,10 +61,10 @@
 			<!-- /.ba-search-filters -->
 			<div class="ba-card">
 				<div class="person-card" v-for="(card, index) in cardsDisplayed">
-					<a :href="card.url" id="search">
+					<a :href="card.url" id="search" v-on:click="showSinglePage(card.id)">
 						<div class="row">
 							<div class="column large-4">
-								<img :src="card.img" :alt="card.name">
+								<img class="ba-person-card-img" :src="card.img" :alt="card.name">
 							</div>						
 							<div class="column large-8">
 								<div class="ba-person-name">
@@ -137,40 +137,46 @@
 	</div>
 </section>
 <!-- /.ba-section-cards -->
+
 </template>
 
 <script>
 	// import json from './json/cards.json';
 export default {
-	data() {
-		isLoading: false;		
-		isMoreLoading: false;
-		
-		return {
-			cards: [],
-			cardsDisplayed: []
-		}
-	},
-	methods:{
-		loadMore(){
-			this.cardsDisplayed.push(
-				...this.cards.slice(this.cardsDisplayed.length, this.cardsDisplayed.length + 3)
-				)
-		} 
-	},
-	mounted(){
-		fetch('assets/json/cards.json')
-		.then(res => res.json())
-		.then(list => {
-			this.cards = list;
-			this.cardsDisplayed = list.slice(0, 5); 
-			let element = $('#form-dropdown');
-			console.log(element);
-			
-			var elem = new Foundation.Dropdown(element);
+	 data() {
+    isLoading: false;
+    isMoreLoading: false;
 
-		});
-	}
+    return {
+      cards: [],
+      cardsDisplayed: []
+    };
+  },
+  methods: {
+    loadMore() {
+      this.cardsDisplayed.push(
+        ...this.cards.slice(
+          this.cardsDisplayed.length,
+          this.cardsDisplayed.length + 3
+        )
+      );
+    },
+    showSinglePage(id) {
+      localStorage.singelPageId = id;
+    }
+  },
+  mounted() {
+    fetch("assets/json/cards.json")
+      .then(res => res.json())
+      .then(list => {
+        this.cards = list;
+        this.cardsDisplayed = list.slice(0, 5);
+        let element = $("#form-dropdown");
+        if (element.length > 0) {
+          var elem = new Foundation.Dropdown(element);
+        }
+      });
+  }
 };
 
 </script>

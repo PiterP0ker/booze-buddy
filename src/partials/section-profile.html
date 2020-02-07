@@ -1,42 +1,41 @@
 <section class="ba-section-profile">
 	<div class="row">
 		<div class="column large-4">
-			<img src="../assets/img/andrew-card.png" alt="{{name}}">
+			<img class="ba-section-profile-img" :src="card.img" alt="{{name}}">
 		</div>
 		<div class="column large-7">
 			<div class="ba-card-info">
-				<span class="ba-person-name">Fylhtq{{card.name}}</span>
-				<span class="ba-data">19/01/2020{{card.date}}</span>
+				<span class="ba-person-name">{{card.name}}</span>
+				<span class="ba-data">{{card.date}}</span>
 			</div>
 			<div class="ba-reason">
-				Gjkbnbxtcrfz dtxthbyrf
-				{{card.reasom}}
+				{{card.reason}}
 			</div>
 			<div class="ba-profile-list-info">
 				<ul class="ba-list--2col">
 					<li>
 						<span class="ba-value">О встрече:</span>
-						<span class="ba-answer">djhieruhfehfle fwkefufv ffrev{{card.info}}</span>
+						<span class="ba-answer">{{card.info}}</span>
 					</li>
 					<li>
 						<span class="ba-value">Заведение:</span>
-						<span class="ba-answer"> nfkjehfiurh{{card.place}}</span>
+						<span class="ba-answer">{{card.place}}</span>
 					</li>
 					<li>
 						<span class="ba-value">Компания:</span>
-						<span class="ba-answer">1/3 xtk{{card.company}}</span>
+						<span class="ba-answer">{{card.company}}</span>
 					</li>
 					<li>
 						<span class="ba-value">Повод:</span>
-						<span class="ba-answer">eff fkhef kehnefhd{{card.reason}}</span>
+						<span class="ba-answer">{{card.reason}}</span>
 					</li>
 					<li>
 						<span class="ba-value">Напиток:</span>
-						<span class="ba-answer">jejfuf{{card.drink}}</span>
+						<span class="ba-answer">{{card.drink}}</span>
 					</li>
 					<li>
 						<span class="ba-value">Собрано:</span>
-						<span class="ba-answer">1.2324 dkdhdj{{cards.people}}</span>
+						<span class="ba-answer">{{cards.people}}</span>
 					</li>
 				</ul>
 			</div>

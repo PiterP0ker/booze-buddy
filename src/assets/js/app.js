@@ -19,12 +19,21 @@ import './lib/slick.min.js';
 
 $(document).foundation();
 
-import App from './App.vue'
+import App from './App.vue';
+import Single from './Single.vue';
+
+
 
 new Vue({
 	el: '#search',
 	template: '<App/>',
 	components: {App}
 });
+new Vue({
+	el: '#single-page',
+	template: '<Single/>',
+	components: {Single}
+});
+
 
 // var elem = new Foundation.Dropdown(element, options);

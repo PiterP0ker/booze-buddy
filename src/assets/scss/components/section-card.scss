@@ -2,6 +2,15 @@
 	background: #E5E5E5;
 	padding: 36px 0 89px;
 
+.dropdown-pane {
+	z-index: 2;
+}
+.ba-person-card-img {
+	border-radius: 50%;
+	width: 165px;
+	height: 165px;
+	object-fit: cover;
+}
 	.ba-search-filters{
 		background: #190078;
 		padding: 10px 202px 11px 181px;
@@ -42,7 +51,7 @@
 		border-radius: 20px;
 		transform: translateY(-63px);
 		padding-top: 70px; 
-		z-index: 99;
+		z-index: 1;
 		
 	}
 
