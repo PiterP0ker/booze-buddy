@@ -8,6 +8,7 @@ import 'what-input';
 // This is why we have to use CommonJS require() here since it doesn't
 // have the hoisting behavior.
 window.jQuery = $;
+window.$ = $;
 // require('foundation-sites');
 
 // If you want to pick and choose which modules to include, comment out the above and uncomment
@@ -18,10 +19,21 @@ import './lib/slick.min.js';
 
 $(document).foundation();
 
-import App from './App.vue'
+import App from './App.vue';
+import Single from './Single.vue';
+
+
 
 new Vue({
 	el: '#search',
 	template: '<App/>',
 	components: {App}
-})
+});
+new Vue({
+	el: '#single-page',
+	template: '<Single/>',
+	components: {Single}
+});
+
+
+// var elem = new Foundation.Dropdown(element, options);

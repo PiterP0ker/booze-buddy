@@ -1,0 +1,105 @@
+.ba-section-profile{
+	background: #E5E5E5;
+	padding: 57px 0 64px;
+
+	img{
+		width: 360px;
+		height: 345px;
+	}
+
+	.ba-person-name{
+		font-weight: 500;
+		font-size: 20px;
+		letter-spacing: 0.15px;
+		color: #190078;
+		line-height: 1;		
+	}
+
+	.ba-card-info{
+		display: flex;
+		margin-bottom: 25px;
+		align-items: center;
+
+		span + span{
+			margin-left: 30px;
+		}
+
+		.ba-rating{
+			color: #190078;
+		}
+
+		.ba-data{
+			font-weight: 500;
+			font-size: 20px;
+			letter-spacing: 0.15px;
+			line-height: 1;
+			color: #190078;
+		}
+	}
+
+	.ba-reason{
+		font-weight: 500;
+		font-size: 20px;
+		letter-spacing: 0.15px;
+		color: #101010;
+		margin-bottom: 25px;
+	}
+
+	.ba-profile-list-info{
+		height: 150px;
+		ul{
+			margin: 0;
+			margin-bottom: 40px;
+
+			li{
+				list-style: none;
+				display: flex;
+				flex-direction: row;
+			}
+
+			li + li{
+				margin-top: 44px;
+			}
+
+			.ba-value{
+				width: 94px;
+				max-height: 48px;
+
+				font-weight: 500;
+				font-size: 16px;
+				letter-spacing: 0.15px;
+				color: #190078;
+
+				&--challenge{
+					color: #01A39D;
+				}
+			}
+
+			.ba-answer{
+				max-width: 114px;
+
+				font-weight: normal;
+				font-size: 16px;
+				letter-spacing: 0.25px;
+				color: #101010;
+			}
+		}
+		.ba-contact{
+			.ba-button-follow {
+				display: inline-block;
+				margin-bottom: 40px;
+			}
+	
+			.ba-send-message{
+				margin-top: 40px;
+			}
+		}
+	}
+}
+.ba-section-profile-img {
+	display: block;
+	width: 345px;
+	height: 345px;
+	border-radius: 50%;
+	object-fit: cover;
+}
