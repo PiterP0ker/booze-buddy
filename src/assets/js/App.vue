@@ -12,7 +12,7 @@
     			<div class="dropdown-pane" id="form-dropdown" data-dropdown data-auto-focus="true">
       			<form action="#" method="POST">
 						<label for="city">Город</label>
-						<select id="city">
+						<select id="city" v-on:change="changeCity">
 							<option value="Киев">Киев</option>
 							<option value="Полтава">Полтава</option>
 							<option value="Харьков">Харьков</option>
@@ -24,7 +24,7 @@
 						<input type="date" id="date" name="start" value="Когда">
 
 						<label for="drink">Что пить</label>
-						<select id="drink">
+						<select id="drink" v-on:change="changeDrink">
 							<option value="Водка">Водка</option>
 							<option value="Ром">Ром</option>
 							<option value="Виски">Виски</option>
@@ -38,7 +38,7 @@
 						</select>
 
 						<label for="amount">Количество людей</label>
-						<select id="amount">
+						<select id="amount" v-on:change="changeCompany">
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -52,7 +52,7 @@
 					</form>
     			</div>
 
-				<a href="#">	
+				<a href="#" class="hide-for-small-only">	
 					<svg width="21" height="27" viewBox="0 0 21 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M6.12508 0.375L0.291748 6.20833H4.66675V16.4167H7.58342V6.20833H11.9584L6.12508 0.375ZM16.3334 20.7917V10.5833H13.4167V20.7917H9.04175L14.8751 26.625L20.7084 20.7917H16.3334Z" fill="#F2E7FE"/>
 					</svg>
@@ -63,8 +63,9 @@
 				<div class="person-card" v-for="(card, index) in cardsDisplayed">
 					<a :href="card.url" id="search" v-on:click="showSinglePage(card.id)">
 						<div class="row">
-							<div class="column large-4">
+							<div class="column large-4 small-4">
 								<img class="ba-person-card-img" :src="card.img" :alt="card.name">
+
 							</div>						
 							<div class="column large-8">
 								<div class="ba-person-name">
@@ -76,12 +77,12 @@
 
 								</div>
 								<div class="ba-card-info">
-									<span class="ba-rating" v-if="card.rating">
+									<div class="ba-rating" v-if="card.rating">
 										<span v-for="star in card.rating" v-if="card.rating >= 1">&#9733</span>
 										<!-- {n = 4 - card.rating} -->
 										<span v-for="star in n" v-if="card.rating < 4">&#9734</span>
-									</span>
-									<span class="ba-data">{{card.date}}</span>
+									</div>
+									<div class="ba-data">{{card.date}}</div>
 								</div>
 								<div class="row">
 									<div class="column">
@@ -125,7 +126,6 @@
 							<path d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z" fill="#D7B7FD"/>
 						</svg>
 					</div>
-					{{cards.length}}
 					<div class="ba-button--more">
 						<button class="waves-effect waves-light btn ba-button-more" v-if="index + 1 === cardsDisplayed.length && index + 1 !== cards.length" v-on:click="loadMore()">еще</button>
 					</div>
@@ -143,40 +143,74 @@
 <script>
 	// import json from './json/cards.json';
 export default {
-	 data() {
-    isLoading: false;
-    isMoreLoading: false;
 
-    return {
-      cards: [],
-      cardsDisplayed: []
-    };
-  },
-  methods: {
-    loadMore() {
-      this.cardsDisplayed.push(
-        ...this.cards.slice(
-          this.cardsDisplayed.length,
-          this.cardsDisplayed.length + 3
-        )
-      );
-    },
-    showSinglePage(id) {
+	data() {
+		isLoading: false;		
+		isMoreLoading: false;
+		
+		return {
+			cards: [],
+			cardsDisplayed: [],
+			filters: {
+				city: "",
+				drink: "",
+				company: ""
+			}
+		}
+	},
+	methods:{
+		loadMore(){
+			this.cardsDisplayed.push(
+				...this.cards.slice(this.cardsDisplayed.length, this.cardsDisplayed.length + 3)
+				)
+		}, 
+		showSinglePage(id) {
       localStorage.singelPageId = id;
-    }
-  },
-  mounted() {
-    fetch("assets/json/cards.json")
-      .then(res => res.json())
-      .then(list => {
-        this.cards = list;
-        this.cardsDisplayed = list.slice(0, 5);
-        let element = $("#form-dropdown");
-        if (element.length > 0) {
-          var elem = new Foundation.Dropdown(element);
-        }
-      });
-  }
+    },
+		filter(){
+			const cards = this.cards;
+
+			const filters = this.filters;
+			if (this.filters.city === '') delete filters.city;
+			if (this.filters.drink === '') delete filters.drink;
+			if (this.filters.company === '') delete filters.company;
+
+			console.log(filters);
+
+			const result = cards.filter(card => {
+				let found = null;
+				for (let f in filters) {
+					found = card[f] === filters[f] && found !== false;
+				}
+				return found;
+			});
+			console.log(result);
+		},
+		changeCity(event){
+			this.filters.city = event.target.value;
+			this.filter();
+		},
+		changeDrink(event){
+			this.filters.drink = event.target.value;
+			this.filter();
+		},
+		changeCompany(event){
+			this.filters.company = event.target.value;
+			this.filter();
+		}
+	},
+	mounted(){
+		fetch('assets/json/cards.json')
+		.then(res => res.json())
+		.then(list => {
+			this.cards = list;
+			this.cardsDisplayed = list.slice(0, 5); 
+			let element = $('#form-dropdown');
+			console.log(element);
+			
+			var elem = new Foundation.Dropdown(element);
+		});
+	}
 };
 
 </script>
