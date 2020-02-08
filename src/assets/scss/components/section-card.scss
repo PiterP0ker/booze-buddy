@@ -141,12 +141,13 @@
 
 		span + span{
 			@include breakpoint(large){
-				margin-left: 30px;	
+				margin-left: 10px;	
 			}
 		}
 
 		.ba-rating{
 			color: #190078;
+			margin-right: 20px;
 		}
 
 		.ba-data{

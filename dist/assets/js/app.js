@@ -14531,7 +14531,7 @@ var render = function() {
                   staticClass: "ba-like",
                   on: {
                     click: function($event) {
-                      _vm.isActive = !_vm.isActive
+                      _vm.toggleFollowToP((_vm.isActive = !_vm.isActive))
                     }
                   }
                 },
@@ -16569,7 +16569,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Nikita\beetroot\booze-buddy\src\assets\js\app.js */"./src/assets/js/app.js");
+module.exports = __webpack_require__(/*! d:\Nikita\beetroot\booze-buddy\src\assets\js\app.js */"./src/assets/js/app.js");
 
 
 /***/ })
