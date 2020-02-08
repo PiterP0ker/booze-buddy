@@ -35,5 +35,22 @@ new Vue({
 	components: {Single}
 });
 
+Vue.component('todo-item', {
+	props: ['like'],
+	template: `<a href="#" class="ba-header-registration">
+	<img src="assets/img/register.svg" alt="Registration">
+</a>`
+ })
 
-// var elem = new Foundation.Dropdown(element, options);
+ var app7 = new Vue({
+	el: '#app-7',
+	data: {
+	  likeList: []
+	},
+	methods: {
+		showLikeCount(id) {
+			localStorage.followToPerson = id;
+		 }
+	}
+
+ })

@@ -41,7 +41,11 @@
       </div>
       <div class="column large-1">
         <div class="div">Рейтинг</div>
-        <div class="ba-rating">{{ card.rating }}</div>
+        <div class="ba-rating" v-if="card.rating">
+										<span v-for="star in card.rating" v-if="card.rating >= 1">&#9733</span>
+										<!-- {n = 4 - card.rating} -->
+										<span v-for="star in n" v-if="card.rating < 4">&#9734</span>
+									</div>
       </div>
       <div class="column large-6 large-offset-4">
         <div class="ba-contact">

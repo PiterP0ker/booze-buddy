@@ -255,6 +255,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     return {
       cards: [],
       cardsDisplayed: [],
+      isActive: false,
       filters: {
         city: "",
         drink: "",
@@ -263,6 +264,34 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     };
   },
   methods: {
+    toggleFollowToPerson: function toggleFollowToPerson(id) {
+      var followToPerson = [];
+
+      if (localStorage.followToPerson !== undefined) {
+        followToPerson = JSON.parse(localStorage.followToPerson);
+      }
+
+      console.log(followToPerson);
+
+      if (!followToPerson.length) {
+        followToPerson.push(id);
+      } else {
+        var check = followToPerson.find(function (saveId) {
+          return saveId === id;
+        });
+
+        if (check) {
+          followToPerson = followToPerson.filter(function (saveId) {
+            return saveId !== id;
+          });
+        } else {
+          followToPerson.push(id);
+        }
+      }
+
+      console.log(followToPerson);
+      localStorage.setItem("followToPerson", JSON.stringify(followToPerson));
+    },
     loadMore: function loadMore() {
       var _this$cardsDisplayed;
 
@@ -328,6 +357,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -14453,29 +14486,41 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "ba-like" }, [
-                _c(
-                  "svg",
-                  {
-                    attrs: {
-                      width: "21",
-                      height: "20",
-                      viewBox: "0 0 21 20",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg"
+              _c(
+                "div",
+                {
+                  staticClass: "ba-like",
+                  on: {
+                    click: function($event) {
+                      return _vm.toggleFollowToPerson(card.id)
                     }
-                  },
-                  [
-                    _c("path", {
+                  }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
                       attrs: {
-                        d:
-                          "M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z",
-                        fill: "#D7B7FD"
+                        width: "21",
+                        height: "20",
+                        viewBox: "0 0 21 20",
+                        fill: "none",
+                        xmlns: "http://www.w3.org/2000/svg"
                       }
-                    })
-                  ]
-                )
-              ]),
+                    },
+                    [
+                      _c("path", {
+                        class: { isActive: _vm.isActive },
+                        attrs: {
+                          d:
+                            "M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z",
+                          fill: "#D7B7FD"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "ba-button--more" }, [
                 index + 1 === _vm.cardsDisplayed.length &&
@@ -14622,9 +14667,26 @@ var render = function() {
       _c("div", { staticClass: "column large-1" }, [
         _c("div", { staticClass: "div" }, [_vm._v("Рейтинг")]),
         _vm._v(" "),
-        _c("div", { staticClass: "ba-rating" }, [
-          _vm._v(_vm._s(_vm.card.rating))
-        ])
+        _vm.card.rating
+          ? _c(
+              "div",
+              { staticClass: "ba-rating" },
+              [
+                _vm._l(_vm.card.rating, function(star) {
+                  return _vm.card.rating >= 1
+                    ? _c("span", [_vm._v("★")])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.n, function(star) {
+                  return _vm.card.rating < 4
+                    ? _c("span", [_vm._v("☆")])
+                    : _vm._e()
+                })
+              ],
+              2
+            )
+          : _vm._e()
       ]),
       _vm._v(" "),
       _vm._m(0)
@@ -15520,7 +15582,22 @@ new Vue({
   components: {
     Single: _Single_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
-}); // var elem = new Foundation.Dropdown(element, options);
+});
+Vue.component('todo-item', {
+  props: ['like'],
+  template: "<a href=\"#\" class=\"ba-header-registration\">\n\t<img src=\"assets/img/register.svg\" alt=\"Registration\">\n</a>"
+});
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    likeList: []
+  },
+  methods: {
+    showLikeCount: function showLikeCount(id) {
+      localStorage.followToPerson = id;
+    }
+  }
+});
 
 /***/ }),
 

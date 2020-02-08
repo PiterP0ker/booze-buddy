@@ -121,9 +121,9 @@
 							<!-- /.column -->
 						</div>
 					</a>
-					<div class="ba-like">
+					<div class="ba-like" v-on:click="toggleFollowToPerson(card.id)" >
 						<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z" fill="#D7B7FD"/>
+							<path v-bind:class="{isActive: isActive}"  d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z" fill="#D7B7FD"/>
 						</svg>
 					</div>
 					<div class="ba-button--more">
@@ -143,14 +143,16 @@
 <script>
 	// import json from './json/cards.json';
 export default {
+	
 
 	data() {
 		isLoading: false;		
 		isMoreLoading: false;
-		
+
 		return {
 			cards: [],
 			cardsDisplayed: [],
+			isActive: false,
 			filters: {
 				city: "",
 				drink: "",
@@ -159,6 +161,27 @@ export default {
 		}
 	},
 	methods:{
+		toggleFollowToPerson(id) {
+      let followToPerson = [];
+      if (localStorage.followToPerson !== undefined) {
+        followToPerson = JSON.parse(localStorage.followToPerson);
+      }
+
+      console.log(followToPerson);
+      if (!followToPerson.length) {
+        followToPerson.push(id);
+      } else {
+        const check = followToPerson.find(saveId => saveId === id);
+        if (check) {
+          followToPerson = followToPerson.filter(saveId => saveId !== id);
+        } else {
+          followToPerson.push(id);
+        }
+      }
+      console.log(followToPerson);
+
+      localStorage.setItem("followToPerson", JSON.stringify(followToPerson));
+    },
 		loadMore(){
 			this.cardsDisplayed.push(
 				...this.cards.slice(this.cardsDisplayed.length, this.cardsDisplayed.length + 3)

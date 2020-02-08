@@ -1,6 +1,10 @@
 .ba-section-about{
    background: #FAFAFA;
-   padding: 100px 0 0 0;
+	padding: 100px 0 0 0;
+	
+		@media screen and (max-width:640px){
+			padding-top: 0;
+		}
 
    .ba-information{
       margin: auto 0;
