@@ -34,4 +34,3 @@ new Vue({
 	template: '<Single/>',
 	components: {Single}
 });
-

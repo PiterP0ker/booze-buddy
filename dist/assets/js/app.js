@@ -245,6 +245,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+>>>>>>> mrg-filter
 // import json from './json/cards.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -253,6 +258,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     isMoreLoading: false;
 
     return {
+<<<<<<< HEAD
       cards: [],
       cardsDisplayed: [],
       isActive: false,
@@ -260,10 +266,21 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         city: "",
         drink: "",
         company: ""
+=======
+      initialCards: [],
+      cards: [],
+      cardsDisplayed: [],
+      filters: {
+        city: "",
+        drink: "",
+        company: "",
+        date: ""
+>>>>>>> mrg-filter
       }
     };
   },
   methods: {
+<<<<<<< HEAD
     toggleFollowToPerson: function toggleFollowToPerson(id) {
       var followToPerson = [];
 
@@ -292,6 +309,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       console.log(followToPerson);
       localStorage.setItem("followToPerson", JSON.stringify(followToPerson));
     },
+=======
+>>>>>>> mrg-filter
     loadMore: function loadMore() {
       var _this$cardsDisplayed;
 
@@ -301,6 +320,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       localStorage.singelPageId = id;
     },
     filter: function filter() {
+<<<<<<< HEAD
       var cards = this.cards;
       var filters = this.filters;
       if (this.filters.city === '') delete filters.city;
@@ -312,11 +332,35 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         for (var f in filters) {
           found = card[f] === filters[f] && found !== false;
+=======
+      var cards = this.initialCards;
+      var filters = this.filters;
+
+      for (var f in this.filters) {
+        if (this.filters[f] === '') delete filters[f];
+      }
+
+      this.cards = cards.filter(function (card) {
+        var found = null;
+
+        for (var _f in filters) {
+          console.log(card.city, filters[_f]);
+
+          if (_f !== 'company' || filters[_f] <= 5) {
+            found = card[_f] === filters[_f] && found !== false;
+          } else if (_f === 'company' && filters[_f] > 5) {
+            found = card[_f] > 5 && found !== false;
+          }
+>>>>>>> mrg-filter
         }
 
         return found;
       });
+<<<<<<< HEAD
       console.log(result);
+=======
+      this.cardsDisplayed = this.cards.slice(0, 5);
+>>>>>>> mrg-filter
     },
     changeCity: function changeCity(event) {
       this.filters.city = event.target.value;
@@ -327,8 +371,30 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       this.filter();
     },
     changeCompany: function changeCompany(event) {
+<<<<<<< HEAD
       this.filters.company = event.target.value;
       this.filter();
+=======
+      this.filters.company = +event.target.value;
+      this.filter();
+    },
+    changeDate: function changeDate(event) {
+      var d = new Date(event.target.value);
+      this.filters.date = "".concat(d.getDate(), ".").concat(d.getMonth() + 1 <= 9 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1, ".").concat(d.getFullYear());
+      this.filter();
+    },
+    resetFilter: function resetFilter(event) {
+      event.preventDefault();
+      event.target.closest('form').reset();
+      this.filters = {
+        city: "",
+        drink: "",
+        company: "",
+        date: ""
+      };
+      this.cards = this.initialCards;
+      this.cardsDisplayed = this.cards.slice(0, 5);
+>>>>>>> mrg-filter
     }
   },
   mounted: function mounted() {
@@ -337,10 +403,17 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     fetch('assets/json/cards.json').then(function (res) {
       return res.json();
     }).then(function (list) {
+<<<<<<< HEAD
       _this.cards = list;
       _this.cardsDisplayed = list.slice(0, 5);
       var element = $('#form-dropdown');
       console.log(element);
+=======
+      _this.initialCards = list;
+      _this.cards = list;
+      _this.cardsDisplayed = list.slice(0, 5);
+      var element = $('#form-dropdown');
+>>>>>>> mrg-filter
       var elem = new Foundation.Dropdown(element);
     });
   }
@@ -413,6 +486,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -420,6 +494,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> mrg-filter
 // import json from './json/cards.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -14194,7 +14270,12 @@ var render = function() {
                     id: "date",
                     name: "start",
                     value: "Когда"
+<<<<<<< HEAD
                   }
+=======
+                  },
+                  on: { change: _vm.changeDate }
+>>>>>>> mrg-filter
                 }),
                 _vm._v(" "),
                 _c("label", { attrs: { for: "drink" } }, [_vm._v("Что пить")]),
@@ -14272,7 +14353,11 @@ var render = function() {
                     _vm._v(" "),
                     _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
                     _vm._v(" "),
+<<<<<<< HEAD
                     _c("option", { attrs: { value: "Больше 5" } }, [
+=======
+                    _c("option", { attrs: { value: "6" } }, [
+>>>>>>> mrg-filter
                       _vm._v("Больше 5")
                     ]),
                     _vm._v(" "),
@@ -14290,7 +14375,18 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _vm._m(0)
+=======
+                _c(
+                  "button",
+                  {
+                    staticClass: "ba-button ba-button-reset",
+                    on: { click: _vm.resetFilter }
+                  },
+                  [_vm._v(" \n\t\t\t\t\t\t\tСбросить фильтр\t\n\t\t\t\t\t\t")]
+                )
+>>>>>>> mrg-filter
               ])
             ]
           ),
@@ -14348,7 +14444,11 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
+<<<<<<< HEAD
                     _c("div", { staticClass: "column large-8" }, [
+=======
+                    _c("div", { staticClass: "column large-8 small-8" }, [
+>>>>>>> mrg-filter
                       _c("div", { staticClass: "ba-person-name" }, [
                         _vm._v(
                           "\n\t\t\t\t\t\t\t\t\t" +
@@ -14486,6 +14586,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
+<<<<<<< HEAD
               _c(
                 "div",
                 {
@@ -14521,6 +14622,31 @@ var render = function() {
                   )
                 ]
               ),
+=======
+              _c("div", { staticClass: "ba-like" }, [
+                _c(
+                  "svg",
+                  {
+                    attrs: {
+                      width: "21",
+                      height: "20",
+                      viewBox: "0 0 21 20",
+                      fill: "none",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z",
+                        fill: "#D7B7FD"
+                      }
+                    })
+                  ]
+                )
+              ]),
+>>>>>>> mrg-filter
               _vm._v(" "),
               _c("div", { staticClass: "ba-button--more" }, [
                 index + 1 === _vm.cardsDisplayed.length &&
@@ -14548,6 +14674,7 @@ var render = function() {
     ])
   ])
 }
+<<<<<<< HEAD
 var staticRenderFns = [
   function() {
     var _vm = this
@@ -14566,6 +14693,9 @@ var staticRenderFns = [
     ])
   }
 ]
+=======
+var staticRenderFns = []
+>>>>>>> mrg-filter
 render._withStripped = true
 
 
@@ -14589,14 +14719,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "ba-section-profile" }, [
     _c("div", { staticClass: "row" }, [
+<<<<<<< HEAD
       _c("div", { staticClass: "column large-4" }, [
+=======
+      _c("div", { staticClass: "column large-4 small-12" }, [
+>>>>>>> mrg-filter
         _c("img", {
           staticClass: "ba-section-profile-img",
           attrs: { src: _vm.card.img, alt: _vm.card.name }
         })
       ]),
       _vm._v(" "),
+<<<<<<< HEAD
       _c("div", { staticClass: "column large-7" }, [
+=======
+      _c("div", { staticClass: "column large-7 small-12" }, [
+>>>>>>> mrg-filter
         _c("div", { staticClass: "ba-card-info" }, [
           _c("span", { staticClass: "ba-person-name" }, [
             _vm._v(_vm._s(_vm.card.name))
@@ -14660,6 +14798,7 @@ var render = function() {
                 _vm._v(_vm._s(_vm.card.people))
               ])
             ])
+<<<<<<< HEAD
           ])
         ])
       ]),
@@ -14713,6 +14852,50 @@ var staticRenderFns = [
     ])
   }
 ]
+=======
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "ba-button ba-button-conect large-offset-2" },
+            [_vm._v("\n\t\t\t\tПрисоединиться\n\t\t\t")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "column large-1 small-3 ba-rating-pos show-for-large" },
+        [
+          _c("div", { staticClass: "ba-rating-title" }, [_vm._v("Рейтинг")]),
+          _vm._v(" "),
+          _vm.card.rating
+            ? _c(
+                "div",
+                { staticClass: "ba-rating" },
+                [
+                  _vm._l(_vm.card.rating, function(star) {
+                    return _vm.card.rating >= 1
+                      ? _c("span", [_vm._v("★")])
+                      : _vm._e()
+                  }),
+                  _vm._v(" "),
+                  _vm._l(_vm.n, function(star) {
+                    return _vm.card.rating < 4
+                      ? _c("span", [_vm._v("☆")])
+                      : _vm._e()
+                  })
+                ],
+                2
+              )
+            : _vm._e()
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+>>>>>>> mrg-filter
 render._withStripped = true
 
 
@@ -15582,7 +15765,11 @@ new Vue({
   components: {
     Single: _Single_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
+<<<<<<< HEAD
 });
+=======
+}); // var elem = new Foundation.Dropdown(element, options);
+>>>>>>> mrg-filter
 
 /***/ }),
 
@@ -16524,7 +16711,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! D:\Nikita\beetroot\booze-buddy\src\assets\js\app.js */"./src/assets/js/app.js");
+=======
+module.exports = __webpack_require__(/*! /Users/viktoria/Vikuska-Programist/beetroot_academy/serv/booze-buddy/src/assets/js/app.js */"./src/assets/js/app.js");
+>>>>>>> mrg-filter
 
 
 /***/ })

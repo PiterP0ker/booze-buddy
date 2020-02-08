@@ -9,7 +9,11 @@
 		"rating": 4, 
 		"city": "Полтава", 
 		"reason": "Хочу веселья", 
+<<<<<<< HEAD
 		"company": "Больше 5 человек", 
+=======
+		"company": 5, 
+>>>>>>> mrg-filter
 		"place": "Villa Krokodila", 
 		"drink": "Коктейли",
 		"challenge": "Вечеринка в костюмах",
@@ -26,7 +30,11 @@
 		"date": "18.01.2020",
 		"city": "Полтава", 
 		"reason": "Выборы президента", 
+<<<<<<< HEAD
 		"company": "3 человека", 
+=======
+		"company": 3, 
+>>>>>>> mrg-filter
 		"place": "Villa Krokodila", 
 		"drink": "Пиво",
 		"info": "Ищу компанию позитивных политологов",
@@ -41,7 +49,11 @@
 		"date": "11.01.2020",
 		"city": "Полтава", 
 		"reason": "День рождения", 
+<<<<<<< HEAD
 		"company": "1 человек", 
+=======
+		"company": 1, 
+>>>>>>> mrg-filter
 		"place": "Versal", 
 		"drink": "Водка",
 		"info": "Forever alone",
@@ -51,12 +63,19 @@
 		"id": "4",
 		"url": "single.html",
 		"img": "assets/img/violetta-card.png",
+<<<<<<< HEAD
 		"rating": 3,
+=======
+>>>>>>> mrg-filter
 		"name": "Виолетта", 
 		"date": "16.01.2020",
 		"city": "Полтава", 
 		"reason": "Просто так", 
+<<<<<<< HEAD
 		"company": "3 человека", 
+=======
+		"company": 3, 
+>>>>>>> mrg-filter
 		"place": "Чичиков", 
 		"drink": "Вино",
 		"info": "Люблю пить",
@@ -67,11 +86,18 @@
 		"url": "single.html",
 		"img": "assets/img/viktor-card.png",
 		"name": "Виктор", 
+<<<<<<< HEAD
 		"rating": 5,
 		"date": "10.01.2020",
 		"city": "Полтава", 
 		"reason": "Найти друзей", 
 		"company": "2 человека", 
+=======
+		"date": "10.01.2020",
+		"city": "Полтава", 
+		"reason": "Найти друзей", 
+		"company": 2, 
+>>>>>>> mrg-filter
 		"place": "Muza Bar", 
 		"drink": "Коктейли",
 		"info": "Собутыльников точнее",
@@ -82,11 +108,18 @@
 		"url": "single.html",
 		"img": "assets/img/alexcss.jpg",
 		"name": "Алексей", 
+<<<<<<< HEAD
 		"rating": 10,
 		"date": "08.02.2020",
 		"city": "Полтава", 
 		"reason": "Наконец-то закончил курс!", 
 		"company": "я 1", 
+=======
+		"date": "08.02.2020",
+		"city": "Полтава", 
+		"reason": "Наконец-то закончил курс!", 
+		"company": 1, 
+>>>>>>> mrg-filter
 		"place": "Ц-Bar", 
 		"drink": "Шоты",
 		"challenge": "Последний герой",
@@ -97,12 +130,20 @@
 		"id": "7",
 		"url": "single.html",
 		"img": "assets/img/beetroot.jpg",
+<<<<<<< HEAD
 		"name": "Группа Лёши",
 		"rating": 10, 
 		"date": "08.02.2020",
 		"city": "Полтава", 
 		"reason": "Закончился курс :(", 
 		"company": "12 человек", 
+=======
+		"name": "Группа Лёши", 
+		"date": "08.02.2020",
+		"city": "Полтава", 
+		"reason": "Закончился курс :(", 
+		"company": 12, 
+>>>>>>> mrg-filter
 		"place": "Beetroot Academy", 
 		"drink": "Слёзы одногруппников",
 		"info": "4 месяца - так мало",
@@ -114,10 +155,16 @@
 		"img": "https://www.placecage.com/c/300/300",
 		"name": "Людмила", 
 		"date": "20.01.2020",
+<<<<<<< HEAD
 		"rating": 4,
 		"city": "Харьков", 
 		"reason": "Развод", 
 		"company": "2 человека", 
+=======
+		"city": "Харьков", 
+		"reason": "Развод", 
+		"company": 2, 
+>>>>>>> mrg-filter
 		"place": "Shanson", 
 		"drink": "Пиво",
 		"info": "-",
@@ -129,10 +176,16 @@
 		"img": "https://www.placecage.com/c/600/600",
 		"name": "Валерий", 
 		"date": "13.01.2020",
+<<<<<<< HEAD
 		"rating": 2,
 		"city": "Киев", 
 		"reason": "Концерт", 
 		"company": "100 человек", 
+=======
+		"city": "Киев", 
+		"reason": "Концерт", 
+		"company": 100, 
+>>>>>>> mrg-filter
 		"place": "Shanson", 
 		"drink": "Текила",
 		"info": "На такие концерты трезвым не ходят",
@@ -144,10 +197,16 @@
 		"img": "https://www.placecage.com/c/200/200",
 		"name": "Светлана", 
 		"date": "14.01.2020",
+<<<<<<< HEAD
 		"rating": 1,
 		"city": "Харьков", 
 		"reason": "Рождение ребенка", 
 		"company": "10 человек", 
+=======
+		"city": "Харьков", 
+		"reason": "Рождение ребенка", 
+		"company": 10, 
+>>>>>>> mrg-filter
 		"place": "Tesla Bar", 
 		"drink": "Пиво",
 		"challenge": "Последний герой",
@@ -159,11 +218,18 @@
 		"url": "single.html",
 		"img": "https://www.placecage.com/c/400/400",
 		"name": "Игорь", 
+<<<<<<< HEAD
 		"rating": 3,
 		"date": "23.01.2020",
 		"city": "Львов", 
 		"reason": "День Рождение бабушки", 
 		"company": "7 человек", 
+=======
+		"date": "23.01.2020",
+		"city": "Львов", 
+		"reason": "День Рождение бабушки", 
+		"company": 7, 
+>>>>>>> mrg-filter
 		"place": "Korova", 
 		"drink": "Виски",
 		"info": "Это для бабушки",
@@ -175,10 +241,16 @@
 		"img": "https://www.placecage.com/300/300",
 		"name": "Олег", 
 		"date": "14.01.2020",
+<<<<<<< HEAD
 		"rating": 4,
 		"city": "Харьков", 
 		"reason": "Свадьба", 
 		"company": "5 человек", 
+=======
+		"city": "Харьков", 
+		"reason": "Свадьба", 
+		"company": 5, 
+>>>>>>> mrg-filter
 		"place": "В Рот", 
 		"drink": "Вино",
 		"challenge": "Пройти золотую милю",

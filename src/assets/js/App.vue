@@ -21,7 +21,7 @@
 						</select>
 
 						<label for="date">Дата</label>
-						<input type="date" id="date" name="start" value="Когда">
+						<input type="date" id="date" name="start" value="Когда" v-on:change="changeDate">
 
 						<label for="drink">Что пить</label>
 						<select id="drink" v-on:change="changeDrink">
@@ -44,11 +44,13 @@
 							<option value="3">3</option>
 							<option value="4">4</option>
 							<option value="5">5</option>
-							<option value="Больше 5">Больше 5</option>
+							<option value="6">Больше 5</option>
 							<option value="Сколько людей хочу найти" selected hidden>Сколько людей хочу найти</option>
 						</select>
 
-						<label for="challenge"><input type="checkbox" name="challenge" id="challenge" checked>Участвовать в челендже</label>	
+						<button class="ba-button ba-button-reset" v-on:click="resetFilter"> 
+							Сбросить фильтр	
+						</button>	
 					</form>
     			</div>
 
@@ -67,7 +69,7 @@
 								<img class="ba-person-card-img" :src="card.img" :alt="card.name">
 
 							</div>						
-							<div class="column large-8">
+							<div class="column large-8 small-8">
 								<div class="ba-person-name">
 									{{card.name}}
 
@@ -143,20 +145,20 @@
 <script>
 	// import json from './json/cards.json';
 export default {
-	
 
 	data() {
 		isLoading: false;		
 		isMoreLoading: false;
-
+		
 		return {
+			initialCards: [],
 			cards: [],
 			cardsDisplayed: [],
-			isActive: false,
 			filters: {
 				city: "",
 				drink: "",
-				company: ""
+				company: "",
+				date: ""
 			}
 		}
 	},
@@ -188,26 +190,30 @@ export default {
 				)
 		}, 
 		showSinglePage(id) {
-      localStorage.singelPageId = id;
-    },
+      	localStorage.singelPageId = id;
+    	},
 		filter(){
-			const cards = this.cards;
+			const cards = this.initialCards;
 
 			const filters = this.filters;
-			if (this.filters.city === '') delete filters.city;
-			if (this.filters.drink === '') delete filters.drink;
-			if (this.filters.company === '') delete filters.company;
 
-			console.log(filters);
+			for (let f in this.filters) {
+				if (this.filters[f] === '') delete filters[f];
+			}
 
-			const result = cards.filter(card => {
+			this.cards = cards.filter(card => {
 				let found = null;
 				for (let f in filters) {
-					found = card[f] === filters[f] && found !== false;
+					console.log(card.city, filters[f]);
+					if (f !== 'company' || filters[f] <= 5) {
+						found = card[f] === filters[f] && found !== false;
+					} else if (f === 'company' && filters[f] > 5) {
+						found = card[f] > 5 && found !== false;
+					}
 				}
 				return found;
 			});
-			console.log(result);
+			this.cardsDisplayed = this.cards.slice(0, 5);
 		},
 		changeCity(event){
 			this.filters.city = event.target.value;
@@ -218,18 +224,37 @@ export default {
 			this.filter();
 		},
 		changeCompany(event){
-			this.filters.company = event.target.value;
+			this.filters.company = +event.target.value;
 			this.filter();
+		},
+		changeDate(event) {
+			const d = new Date(event.target.value);
+		
+			this.filters.date = `${d.getDate()}.${d.getMonth() + 1 <= 9 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1}.${d.getFullYear()}`;
+			this.filter();
+		},
+		resetFilter(event){
+			event.preventDefault();
+
+			event.target.closest('form').reset();
+			this.filters = {
+				city: "",
+				drink: "",
+				company: "",
+				date: ""
+			};
+			this.cards = this.initialCards;
+			this.cardsDisplayed = this.cards.slice(0, 5);
 		}
 	},
 	mounted(){
 		fetch('assets/json/cards.json')
 		.then(res => res.json())
 		.then(list => {
+			this.initialCards = list;
 			this.cards = list;
 			this.cardsDisplayed = list.slice(0, 5); 
 			let element = $('#form-dropdown');
-			console.log(element);
 			
 			var elem = new Foundation.Dropdown(element);
 		});

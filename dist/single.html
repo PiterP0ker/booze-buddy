@@ -38,6 +38,7 @@
       </nav>    </div>
     <div class="off-canvas-content" data-off-canvas-content>
       <header class="ba-header">
+<<<<<<< HEAD
       	<div class="row column large-8 small-12">
       		<div class="ba-header-wrap">
       			<a href="index.html"><img class="ba-header-group__logo" src="assets/img/logo_header.png"
@@ -56,19 +57,169 @@
       				</a>
       		</div>
       	</div>
+=======
+      	<div class="row column large-6 small-12">
+      		<div class="ba-header-wrap">
+      			<a href="index.html"><img class="ba-header-group__logo" src="assets/img/logo_header.png" alt="Logo"></a>
+      
+      
+      		<div class="ba-header-advert">
+      			<a href="#section-search" class="hide-for-small-only  ba-button ba-button--lighter">
+      				создать объявление
+      			</a>
+      			<a href="#" class="ba-header-add hide-for-medium">
+      				<img src="assets/img/add.png" alt="Add">
+      			</a>
+      			<a href="#" class="ba-header-registration">
+      				<img src="assets/img/register.svg" alt="Registration">
+      			</a>
+      		</div>
+      		</div>
+>>>>>>> mrg-filter
       
       	</div>
       	<!-- /.row -->
       </header>      
       <main>
+<<<<<<< HEAD
         <div id="single-page" >
         </div>
         
       </main>
+=======
+        <div id="single-page">
+        </div>
+        
+        <section class="ba-section-contact">
+        	<div class="row">
+        		<div class="column large-6 large-offset-4">
+        			<h4 class="ba-title">
+        				Есть вопросы? Отправьте Андрею сообщение в Telegram или Viber 
+        			</h4>
+        			<button class="ba-button ba-button-mesage large-offset-2">
+        				написать сообщение
+        			</button>
+        		</div>
+        	</div>
+        </section>
+        <!-- /.bs-section-contact --><section class="ba-section-interesting">
+        	<div class="row">
+        		<div class="column large-6 large-offset-4">
+        			<a :href="card.url" >
+        				<div class="row">
+        					<div class="column large-12 small-12">
+        						<h4 class="ba-title">Возможно для вас будут интересными события:</h4>
+        					</div>
+        					<div class="column large-4 small-4 ">
+        						<img src="assets/img/ksusha-card.png" alt="ksusha">
+        					</div>						
+        					<div class="column large-8">
+        						<div class="ba-person-name">
+        							Ксюша
+        		
+        							<svg v-if="card.challenge" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        								<path d="M20 6V2C20 0.9 19.1 0 18 0H2C0.9 0 0.00999999 0.9 0.00999999 2V6C1.11 6 2 6.9 2 8C2 9.1 1.11 10 0 10V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V10C18.9 10 18 9.1 18 8C18 6.9 18.9 6 20 6ZM18 4.54C16.81 5.23 16 6.53 16 8C16 9.47 16.81 10.77 18 11.46V14H2V11.46C3.19 10.77 4 9.47 4 8C4 6.52 3.2 5.23 2.01 4.54L2 2H18V4.54ZM7.07 12L10 10.12L12.93 12L12.04 8.64L14.73 6.44L11.26 6.23L10 3L8.73 6.22L5.26 6.43L7.95 8.63L7.07 12Z" fill="#02BEB2"/>
+        							</svg>
+        		
+        						</div>
+        						<div class="ba-card-info">
+        							<span class="ba-rating">&#9733 &#9733 &#9733 &#9733</span>
+        							<span class="ba-data">18.01.2020</span>
+        						</div>
+        						<div class="row">
+        							<div class="column">
+        								<div class="ba-person-list-info">
+        									<ul class="ba-list--2col">
+        										<li>
+        											<span class="ba-value">Город:</span>
+        											<span class="ba-answer">Полтава</span>
+        										</li>
+        										<li>
+        											<span class="ba-value">Повод:</span>
+        											<span class="ba-answer">Хочу веселья</span>
+        										</li>
+        										<li>
+        											<span class="ba-value">Компания:</span>
+        											<span class="ba-answer">Больше 5 человек</span>
+        										</li>
+        										<li>
+        											<span class="ba-value">Заведение:</span>
+        											<span class="ba-answer">Villa Krokodila</span>
+        										</li>
+        										<li>
+        											<span class="ba-value">Напиток:</span>
+        											<span class="ba-answer">Коктейли</span>
+        										</li>
+        										<li v-if="card.challenge">
+        											<span class="ba-value ba-value--challenge">Челендж:</span>
+        											<span class="ba-answer">Вечеринка в костюмах</span>
+        										</li>
+        									</ul>
+        								</div>
+        								<!-- /.ba-person-list-info -->
+        							</div>
+        						</div>
+        					</div>
+        					<!-- /.column -->
+        				</div>
+        			</a>
+        		</div>
+        	</div>
+        	
+        </section>
+        <!-- /.ba-section-interesting --><section class="ba-section-challenge hide-for-small-only">
+        	<div class="row">
+        		<div class="column large-6 large-offset-4">
+        			<h4 class="ba-title">Доступные челенджи рядом с вами:</h4>
+        			<div class="ba-challenge">
+        				<div>
+        					<a href="#">
+        						<img src="assets/img/challenge-party.png" alt="Вечеринка в костюмах">
+        						<h6 class="ba-challenge-title">Вечеринка в костюмах</h6>
+        					</a>
+        				</div>
+        				<div>
+        					<a href="#">
+        						<img src="assets/img/challenge-gold.png" alt="Пройти золотую милю">
+        						<h6 class="ba-challenge-title">Пройти золотую милю</h6>
+        					</a>
+        				</div>
+        				<div>
+        					<a href="#">
+        						<img src="assets/img/challenge-hero.png" alt="Последний герой">
+        						<h6 class="ba-challenge-title">Последний герой</h6>
+        					</a>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!-- /.ba-section-challenge --><section class="ba-section-feedback">
+        	<div class="row">
+        		<div class="column large-6 large-offset-4">
+        			<h4 class="ba-title">Отзывы:</h4>
+        			<div class="row">
+        				<div class="column large-4">
+        					<img src="assets/img/andrew-card.png" alt="Andrew">
+        				</div>
+        				<div class="column large-7 large-offset-1">
+        					<h4 class="ba-name">
+        						Сергей
+        					</h4>
+        					<div class="ba-rating">&#9733 &#9733 &#9733 &#9733</div>
+        					<p class="ba-feedback">Крутой,но быстро стал пьяным. Рассказывал интересные стихи.</p>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!-- /.ba-section-feedback -->      </main>
+>>>>>>> mrg-filter
 
       <footer class="ba-footer">
          <div class="row">
             <div class="column large-6 small-12">
+<<<<<<< HEAD
                <a href="#" class="ba-footer-logo flex-container">
                   <img src="assets/img/logo.svg" alt="Logo">
                   
@@ -79,18 +230,38 @@
                   <li><a href="https://franklyn.co/studio/" target="_blank">О нас</a></li>
                   <li><a href="https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%84%D1%96%D0%B4%D0%B5%D0%BD%D1%86%D1%96%D0%B9%D0%BD%D1%96%D1%81%D1%82%D1%8C" target="_blank">Конфиденциальность</a></li>
                   <li><a href="https://learn.javascript.ru/ifelse" target="_blank">Условия </a></li>
+=======
+               <div class="ba-footer-logo flex-container">
+                  <img src="assets/img/logo.svg" alt="Logo">
+                  
+                  <span class="ba-footer-logo--title">Booze Buddy</span>
+               </div>
+               <!-- /.ba-footer-logo -->
+               <ul class="ba-footer-logo--list">
+                  <li><a href="#">О нас</a></li>
+                  <li><a href="#">Конфиденциальность</a></li>
+                  <li><a href="#">Условия </a></li>
+>>>>>>> mrg-filter
                </ul>
             </div>
             <!-- /.column large-6 small-12 -->
       
             <div class="column large-6 small-12 ba-footer-social">
                <div class="ba-footer-social--icon">
+<<<<<<< HEAD
                   <a href="https://www.instagram.com/" target="_blank">
+=======
+                  <a src="https://www.instagram.com/" target="_blank">
+>>>>>>> mrg-filter
                      <svg width="24" height="24">
                         <use xlink:href="#icon-instagram" />
                      </svg>
                   </a>
+<<<<<<< HEAD
                   <a href="http://facebook.com/" target="_blank">
+=======
+                  <a src="http://facebook.com/" target="_blank">
+>>>>>>> mrg-filter
                      <svg width="21" height="21">
                         <use xlink:href="#icon-facebook" /> 
                      </svg>

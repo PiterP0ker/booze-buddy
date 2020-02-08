@@ -1,10 +1,10 @@
 <template>
 	<section class="ba-section-profile" >
     <div class="row" >
-      <div class="column large-4">
+      <div class="column large-4 small-12">
         <img class="ba-section-profile-img" :src="card.img" :alt="card.name" />
       </div>
-      <div class="column large-7">
+      <div class="column large-7 small-12">
         <div class="ba-card-info">
           <span class="ba-person-name">{{ card.name }}</span>
           <span class="ba-data">{{ card.date }}</span>
@@ -37,25 +37,17 @@
               <span class="ba-answer">{{ card.people }}</span>
             </li>
           </ul>
+			<button class="ba-button ba-button-conect large-offset-2">
+				Присоединиться
+			</button>
         </div>
       </div>
-      <div class="column large-1">
-        <div class="div">Рейтинг</div>
+      <div class="column large-1 small-3 ba-rating-pos show-for-large">
+        <div class="ba-rating-title">Рейтинг</div>
         <div class="ba-rating" v-if="card.rating">
-										<span v-for="star in card.rating" v-if="card.rating >= 1">&#9733</span>
-										<!-- {n = 4 - card.rating} -->
-										<span v-for="star in n" v-if="card.rating < 4">&#9734</span>
-									</div>
-      </div>
-      <div class="column large-6 large-offset-4">
-        <div class="ba-contact">
-          <div class="ba-button-follow large-offset-4">
-            <button class="ba-button">Присоединиться</button>
-          </div>
-          <div class="ba-send-message">
-            Есть вопросы? Отправьте Андрею сообщение в Telegram или Viber
-          </div>
-        </div>
+				<span v-for="star in card.rating" v-if="card.rating >= 1">&#9733</span>
+				<!-- {n = 4 - card.rating} -->
+				<span v-for="star in n" v-if="card.rating < 4">&#9734</span>
       </div>
     </div>
   </section>
