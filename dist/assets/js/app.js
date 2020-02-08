@@ -245,6 +245,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
 // import json from './json/cards.json';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -274,7 +276,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       localStorage.singelPageId = id;
     },
     filter: function filter() {
-      var cards = this.cards;
+      var cards = this.initialCards;
       var filters = this.filters;
 
       for (var f in this.filters) {
@@ -285,6 +287,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         var found = null;
 
         for (var _f in filters) {
+          console.log(card.city, filters[_f]);
+
           if (_f !== 'company' || filters[_f] <= 5) {
             found = card[_f] === filters[_f] && found !== false;
           } else if (_f === 'company' && filters[_f] > 5) {
@@ -311,8 +315,19 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     changeDate: function changeDate(event) {
       var d = new Date(event.target.value);
       this.filters.date = "".concat(d.getDate(), ".").concat(d.getMonth() + 1 <= 9 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1, ".").concat(d.getFullYear());
-      console.log(this.filters.date);
       this.filter();
+    },
+    resetFilter: function resetFilter(event) {
+      event.preventDefault();
+      event.target.closest('form').reset();
+      this.filters = {
+        city: "",
+        drink: "",
+        company: "",
+        date: ""
+      };
+      this.cards = this.initialCards;
+      this.cardsDisplayed = this.cards.slice(0, 5);
     }
   },
   mounted: function mounted() {
@@ -325,7 +340,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       _this.cards = list;
       _this.cardsDisplayed = list.slice(0, 5);
       var element = $('#form-dropdown');
-      console.log(element);
       var elem = new Foundation.Dropdown(element);
     });
   }
@@ -14269,7 +14283,14 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(0)
+                _c(
+                  "button",
+                  {
+                    staticClass: "ba-button ba-button-reset",
+                    on: { click: _vm.resetFilter }
+                  },
+                  [_vm._v(" \n\t\t\t\t\t\t\tСбросить фильтр\t\n\t\t\t\t\t\t")]
+                )
               ])
             ]
           ),
@@ -14515,24 +14536,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "challenge" } }, [
-      _c("input", {
-        attrs: {
-          type: "checkbox",
-          name: "challenge",
-          id: "challenge",
-          checked: ""
-        }
-      }),
-      _vm._v("Участвовать в челендже")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

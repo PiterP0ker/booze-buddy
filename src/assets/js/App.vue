@@ -48,7 +48,9 @@
 							<option value="Сколько людей хочу найти" selected hidden>Сколько людей хочу найти</option>
 						</select>
 
-						<label for="challenge"><input type="checkbox" name="challenge" id="challenge" checked>Участвовать в челендже</label>	
+						<button class="ba-button ba-button-reset" v-on:click="resetFilter"> 
+							Сбросить фильтр	
+						</button>	
 					</form>
     			</div>
 
@@ -170,7 +172,7 @@ export default {
       	localStorage.singelPageId = id;
     	},
 		filter(){
-			const cards = this.cards;
+			const cards = this.initialCards;
 
 			const filters = this.filters;
 
@@ -181,6 +183,7 @@ export default {
 			this.cards = cards.filter(card => {
 				let found = null;
 				for (let f in filters) {
+					console.log(card.city, filters[f]);
 					if (f !== 'company' || filters[f] <= 5) {
 						found = card[f] === filters[f] && found !== false;
 					} else if (f === 'company' && filters[f] > 5) {
@@ -189,7 +192,7 @@ export default {
 				}
 				return found;
 			});
-			this.cardsDisplayed = this.cards.slice(0, 5); 
+			this.cardsDisplayed = this.cards.slice(0, 5);
 		},
 		changeCity(event){
 			this.filters.city = event.target.value;
@@ -207,8 +210,20 @@ export default {
 			const d = new Date(event.target.value);
 		
 			this.filters.date = `${d.getDate()}.${d.getMonth() + 1 <= 9 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1}.${d.getFullYear()}`;
-			console.log(this.filters.date);
 			this.filter();
+		},
+		resetFilter(event){
+			event.preventDefault();
+
+			event.target.closest('form').reset();
+			this.filters = {
+				city: "",
+				drink: "",
+				company: "",
+				date: ""
+			};
+			this.cards = this.initialCards;
+			this.cardsDisplayed = this.cards.slice(0, 5);
 		}
 	},
 	mounted(){
@@ -219,7 +234,6 @@ export default {
 			this.cards = list;
 			this.cardsDisplayed = list.slice(0, 5); 
 			let element = $('#form-dropdown');
-			console.log(element);
 			
 			var elem = new Foundation.Dropdown(element);
 		});
