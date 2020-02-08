@@ -258,6 +258,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       initialCards: [],
       cards: [],
       cardsDisplayed: [],
+      isActive: false,
       filters: {
         city: "",
         drink: "",
@@ -384,6 +385,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14314,7 +14325,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "ba-button ba-button-reset",
+                    staticClass: "ba-button ba-button--lighter ba-button-reset",
                     on: { click: _vm.resetFilter }
                   },
                   [_vm._v(" \n\t\t\t\t\t\t\tСбросить фильтр\t\n\t\t\t\t\t\t")]
@@ -14520,7 +14531,7 @@ var render = function() {
                   staticClass: "ba-like",
                   on: {
                     click: function($event) {
-                      return _vm.toggleFollowToPerson(card.id)
+                      _vm.isActive = !_vm.isActive
                     }
                   }
                 },
@@ -14601,10 +14612,41 @@ var render = function() {
   return _c("section", { staticClass: "ba-section-profile" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "column large-4 small-12" }, [
-        _c("img", {
-          staticClass: "ba-section-profile-img",
-          attrs: { src: _vm.card.img, alt: _vm.card.name }
-        })
+        _c("div", { staticClass: "ba-img-wrap" }, [
+          _c("img", {
+            staticClass: "ba-section-profile-img",
+            attrs: { src: _vm.card.img, alt: _vm.card.name }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          { staticClass: "ba-button-comeback", attrs: { href: "search.html" } },
+          [
+            _c(
+              "svg",
+              {
+                attrs: {
+                  width: "16",
+                  height: "16",
+                  viewBox: "0 0 16 16",
+                  fill: "none",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M15.9999 6.99996V8.99996H3.99991L9.49991 14.5L8.07991 15.92L0.159912 7.99996L8.07991 0.0799561L9.49991 1.49996L3.99991 6.99996H15.9999Z",
+                    fill: "white"
+                  }
+                })
+              ]
+            ),
+            _vm._v("\nВернуться к списку событий\n\n\t\t  ")
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "column large-7 small-12" }, [
@@ -14675,7 +14717,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "ba-button ba-button-conect large-offset-2" },
+            {
+              staticClass:
+                "ba-button ba-button--lighter ba-button-conect large-offset-2"
+            },
             [_vm._v("\n\t\t\t\tПрисоединиться\n\t\t\t")]
           )
         ])

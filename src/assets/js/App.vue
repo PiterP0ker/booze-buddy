@@ -48,7 +48,7 @@
 							<option value="Сколько людей хочу найти" selected hidden>Сколько людей хочу найти</option>
 						</select>
 
-						<button class="ba-button ba-button-reset" v-on:click="resetFilter"> 
+						<button class="ba-button ba-button--lighter ba-button-reset" v-on:click="resetFilter"> 
 							Сбросить фильтр	
 						</button>	
 					</form>
@@ -123,7 +123,7 @@
 							<!-- /.column -->
 						</div>
 					</a>
-					<div class="ba-like" v-on:click="toggleFollowToPerson(card.id)" >
+					<div class="ba-like" v-on:click="isActive = !isActive" >
 						<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path v-bind:class="{isActive: isActive}"  d="M10.4999 19.2396L8.9895 17.8646C3.62492 13 0.083252 9.79167 0.083252 5.85417C0.083252 2.64583 2.60409 0.125 5.81242 0.125C7.62492 0.125 9.3645 0.96875 10.4999 2.30208C11.6353 0.96875 13.3749 0.125 15.1874 0.125C18.3958 0.125 20.9166 2.64583 20.9166 5.85417C20.9166 9.79167 17.3749 13 12.0103 17.875L10.4999 19.2396Z" fill="#D7B7FD"/>
 						</svg>
@@ -154,6 +154,7 @@ export default {
 			initialCards: [],
 			cards: [],
 			cardsDisplayed: [],
+			isActive:false,
 			filters: {
 				city: "",
 				drink: "",

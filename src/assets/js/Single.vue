@@ -2,7 +2,17 @@
 	<section class="ba-section-profile" >
     <div class="row">
       <div class="column large-4 small-12">
-        <img class="ba-section-profile-img" :src="card.img" :alt="card.name" />
+        <div class="ba-img-wrap">
+
+			  <img class="ba-section-profile-img" :src="card.img" :alt="card.name" />
+		  </div>
+		  <a href="search.html" class="ba-button-comeback">
+			 	<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.9999 6.99996V8.99996H3.99991L9.49991 14.5L8.07991 15.92L0.159912 7.99996L8.07991 0.0799561L9.49991 1.49996L3.99991 6.99996H15.9999Z" fill="white"/>
+</svg>
+Вернуться к списку событий
+
+		  </a>
       </div>
       <div class="column large-7 small-12">
         <div class="ba-card-info">
@@ -37,7 +47,7 @@
               <span class="ba-answer">{{ card.people }}</span>
             </li>
           </ul>
-			<button class="ba-button ba-button-conect large-offset-2">
+			<button class="ba-button ba-button--lighter ba-button-conect large-offset-2">
 				Присоединиться
 			</button>
         </div>
