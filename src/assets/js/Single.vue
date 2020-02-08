@@ -1,6 +1,6 @@
 <template>
 	<section class="ba-section-profile" >
-    <div class="row" >
+    <div class="row">
       <div class="column large-4 small-12">
         <img class="ba-section-profile-img" :src="card.img" :alt="card.name" />
       </div>
@@ -50,6 +50,7 @@
 				<span v-for="star in n" v-if="card.rating < 4">&#9734</span>
       </div>
     </div>
+	 </div>
   </section>
 </template>
 
